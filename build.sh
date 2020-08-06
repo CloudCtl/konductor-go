@@ -15,12 +15,12 @@ sudo chown $USER ~/.ssh -R
 git stage -A; git commit -m 'testing'; git push origin master
 
 plugins="
+    "github.com/go-git/go-billy/v5/osfs" \
     "github.com/spf13/cobra" \
     "golang.org/x/sys/unix" \
     "github.com/spf13/viper" \
     "github.com/go-git/go-git" \
     "github.com/go-git/go-git/plumbing" \
-    "github.com/go-git/go-billy/osfs" \
     "github.com/CodeSparta/konductor-go/cmd" \
     "github.com/CodeSparta/konductor-go/plugins/err" \
     "github.com/CodeSparta/konductor-go/plugins/log" \
