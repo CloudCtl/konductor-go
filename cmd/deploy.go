@@ -26,9 +26,9 @@ import (
 //  "path/filepath"
 
     "github.com/spf13/cobra"
-//  kpullsecret "github.com/CodeSparta/koffer-go/plugins/auth"
-//  kcorelog "github.com/CodeSparta/koffer-go/plugins/log"
-    "github.com/CodeSparta/koffer-go/plugins/err"
+//  kpullsecret "github.com/CodeSparta/konductor-go/plugins/auth"
+    kcorelog "github.com/CodeSparta/konductor-go/plugins/log"
+    "github.com/CodeSparta/konductor-go/plugins/err"
 )
 
 // deployCmd represents the deploy command

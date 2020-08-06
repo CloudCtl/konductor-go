@@ -5,5 +5,5 @@ sudo podman run \
     --volume ~/.ssh:/root/.ssh \
     --volume ~/.bashrc:/root/.bashrc \
     --volume ~/.gitconfig:/root/.gitconfig \
-    --name koffer-go --hostname koffer-go \
+    --name konductor-go --hostname konductor-go \
   docker.io/ocpredshift/red-gotools -c /usr/bin/tmux
