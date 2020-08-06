@@ -28,10 +28,10 @@ import (
     "github.com/spf13/cobra"
     "github.com/go-git/go-git"
     "github.com/go-git/go-git/plumbing"
-    kpullsecret "github.com/CodeSparta/koffer-go/plugins/auth"
-    kcorelog "github.com/CodeSparta/koffer-go/plugins/log"
-    "github.com/CodeSparta/koffer-go/plugins/err"
-//  "github.com/codesparta/koffer/entrypoint/src"
+    kpullsecret "github.com/CodeSparta/konductor-go/plugins/auth"
+    kcorelog "github.com/CodeSparta/konductor-go/plugins/log"
+    "github.com/CodeSparta/konductor-go/plugins/err"
+//  "github.com/codesparta/konductor/entrypoint/src"
 )
 
 var (
@@ -47,7 +47,7 @@ var bundleCmd = &cobra.Command{
 	Short: "Koffer Engine Bundle Utility",
 	Long: `
 Koffer Engine Bundle:
-  Bundle is intended to run against koffer collector plugin
+  Bundle is intended to run against konductor collector plugin
   repos to build artifact bundles capable of transporting all
   dependencies required for build or operations time engagement.
 
@@ -62,11 +62,11 @@ Koffer Engine Bundle:
 
 func init() {
 	rootCmd.AddCommand(bundleCmd)
-	bundleCmd.Flags().BoolP("help", "h", false, "koffer bundle help")
+	bundleCmd.Flags().BoolP("help", "h", false, "konductor bundle help")
 	bundleCmd.Flags().StringVarP(&service, "service", "s", "github.com", "Git Server")
 	bundleCmd.Flags().StringVarP(&user, "user", "u", "CodeSparta", "Repo {User,Organization}/path")
         bundleCmd.Flags().StringVarP(&branch, "branch", "b", "master", "Git Branch")
-        bundleCmd.Flags().StringVarP(&dir, "dir", "d", "/root/koffer", "Clone Path")
+        bundleCmd.Flags().StringVarP(&dir, "dir", "d", "/root/konductor", "Clone Path")
         bundleCmd.Flags().StringArrayVarP(&repos, "repo", "r", []string{}, "Plugin Repo Name")
 }
 
@@ -81,7 +81,7 @@ func core() {
     cmdRegistryStart()
 
         for _, repo := range repos {
-            kofferLoop(repo)
+            konductorLoop(repo)
             // build url from vars
             gitslice := []string{ "https://", service, "/", user, "/", repo }
             url := strings.Join(gitslice, "")
@@ -211,6 +211,6 @@ func cmdPluginRun() {
         fmt.Printf("\nerr:\n%s\n", errStr)
     }
 }
-func kofferLoop(repo string) {
+func konductorLoop(repo string) {
     fmt.Println(" >>  Running Plugin: ", repo)
 }

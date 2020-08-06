@@ -1,10 +1,8 @@
 /*
-Copyright © 2020 NAME HERE <EMAIL ADDRESS>
-
+Copyright 2020 ContainerCraft.io emcee@braincraft.io
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-
     http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
@@ -13,8 +11,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package cmd
 
+package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
@@ -28,14 +26,13 @@ var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "konductor-go",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Use:   "konductor",
+	Short: "Koffer Engine Entrypoint Utilities",
+	Long: `
+  Koffer provides the entrypoint functions to operate the Koffer Engine
+  artifact collector container to provide secure networks & airgaped
+  environments with a consistent mode of dependency transportation.
+`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
@@ -53,15 +50,14 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	// Here you will define your flags and configuration settings.
+	// Define flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
-
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.konductor-go.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.konductor/config.yml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.Flags().BoolP("help", "h", true, "Default help message")
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -77,9 +73,9 @@ func initConfig() {
 			os.Exit(1)
 		}
 
-		// Search config in home directory with name ".konductor-go" (without extension).
+		// Search config in home directory with name ".konductor/config.yml" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".konductor-go")
+		viper.SetConfigName(".konductor/config.yml")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
