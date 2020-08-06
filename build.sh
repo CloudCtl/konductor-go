@@ -15,7 +15,6 @@ sudo chown $USER ~/.ssh -R
 git stage -A; git commit -m 'testing'; git push origin master
 
 plugins="
-    "github.com/go-git/go-billy/v5/osfs" \
     "github.com/spf13/cobra" \
     "golang.org/x/sys/unix" \
     "github.com/spf13/viper" \
