@@ -20,6 +20,9 @@ plugins="
     "github.com/go-git/go-git" \
     "github.com/go-git/go-git/plumbing" \
     "github.com/CodeSparta/konductor-go/cmd" \
+    "github.com/CodeSparta/konductor-go/err" \
+    "github.com/CodeSparta/konductor-go/log" \
+    "github.com/CodeSparta/konductor-go/auth" \
 "
 for i in ${plugins}; do
   ${goCmd} get -u ${i};

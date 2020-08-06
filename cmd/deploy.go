@@ -16,9 +16,21 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
+    "os"
+    "log"
+    "fmt"
+    "flag"
+    "sync"
+    "os/exec"
+    "strings"
+    "path/filepath"
 
-	"github.com/spf13/cobra"
+    "github.com/spf13/cobra"
+    "github.com/go-git/go-git"
+    "github.com/go-git/go-git/plumbing"
+    kpullsecret "github.com/CodeSparta/koffer-go/plugins/auth"
+    kcorelog "github.com/CodeSparta/koffer-go/plugins/log"
+    "github.com/CodeSparta/koffer-go/plugins/err"
 )
 
 // deployCmd represents the deploy command
@@ -41,7 +53,7 @@ func init() {
 }
 
 func core() {
-  CmdPluginRun
+//  CmdPluginRun()
 }
 
 // Run Konductor Plugin from site.yml
