@@ -19,17 +19,15 @@ import (
     "os"
     "log"
     "fmt"
-    "flag"
+//  "flag"
     "sync"
     "os/exec"
-    "strings"
-    "path/filepath"
+//  "strings"
+//  "path/filepath"
 
     "github.com/spf13/cobra"
-    "github.com/go-git/go-git"
-    "github.com/go-git/go-git/plumbing"
-    kpullsecret "github.com/CodeSparta/koffer-go/plugins/auth"
-    kcorelog "github.com/CodeSparta/koffer-go/plugins/log"
+//  kpullsecret "github.com/CodeSparta/koffer-go/plugins/auth"
+//  kcorelog "github.com/CodeSparta/koffer-go/plugins/log"
     "github.com/CodeSparta/koffer-go/plugins/err"
 )
 
