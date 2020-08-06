@@ -11,7 +11,8 @@ rm /bin/konductor 2>/dev/null
 rm -rf /root/konductor 2>/dev/null
 mkdir -p /tmp/bin
 
-#git stage -A; git commit -m 'testing'; git push origin master
+sudo chown $USER ~/.ssh -R
+git stage -A; git commit -m 'testing'; git push origin master
 
 plugins="
     "github.com/spf13/cobra" \
@@ -19,6 +20,7 @@ plugins="
     "github.com/spf13/viper" \
     "github.com/go-git/go-git" \
     "github.com/go-git/go-git/plumbing" \
+    "github.com/go-git/go-billy/osfs" \
     "github.com/CodeSparta/konductor-go/cmd" \
     "github.com/CodeSparta/konductor-go/plugins/err" \
     "github.com/CodeSparta/konductor-go/plugins/log" \
