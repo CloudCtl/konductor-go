@@ -28,7 +28,7 @@ import (
     "github.com/spf13/cobra"
 //  kpullsecret "github.com/CodeSparta/konductor-go/plugins/auth"
     kcorelog "github.com/CodeSparta/konductor-go/plugins/log"
-    "github.com/CodeSparta/konductor-go/plugins/err"
+//  "github.com/CodeSparta/konductor-go/plugins/err"
 )
 
 // deployCmd represents the deploy command
