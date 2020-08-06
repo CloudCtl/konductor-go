@@ -1,5 +1,5 @@
 /*
-Copyright © 2020 NAME HERE <EMAIL ADDRESS>
+Copyright 2020 Kat Morgan <usrbinkat@braincraft.io>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,26 +16,25 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-	"github.com/spf13/cobra"
 	"os"
+	"fmt"
 
-	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
+	"github.com/spf13/cobra"
+	homedir "github.com/mitchellh/go-homedir"
 )
 
 var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "konductor-go",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Use:   "konductor",
+	Short: "Konductor Engine Entrypoint Utility",
+	Long: `
+Konductor provides the entrypoint functions to operate the Konductor 
+Engine cloud automation container & provides secure networks & airgaped
+environments with a consistent mode of "High Side" automation reliability.
+`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
@@ -57,7 +56,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.konductor-go.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.konductor.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
@@ -77,9 +76,9 @@ func initConfig() {
 			os.Exit(1)
 		}
 
-		// Search config in home directory with name ".konductor-go" (without extension).
+		// Search config in home directory with name ".konductor" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".konductor-go")
+		viper.SetConfigName(".konductor/config.yml")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match

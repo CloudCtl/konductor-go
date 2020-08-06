@@ -1,5 +1,5 @@
 /*
-Copyright © 2020 NAME HERE <EMAIL ADDRESS>
+Copyright 2020 Kat Morgan <usrbinkat@braincraft.io>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -25,27 +25,60 @@ import (
 var deployCmd = &cobra.Command{
 	Use:   "deploy",
 	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Long: `
+Konductor Engine Init:
+  Init is designed to orchestrate cloud deployment & operation
+  "maestro" automation plugins to deliver seamlessly in
+  restricted & airgap environment capabilities.
+`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("deploy called")
+		core()
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(deployCmd)
+}
 
-	// Here you will define your flags and configuration settings.
+func core() {
+  CmdPluginRun
+}
 
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// deployCmd.PersistentFlags().String("foo", "", "A help for foo")
+// Run Konductor Plugin from site.yml
+func CmdPluginRun() {
 
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// deployCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+    // Run Plugin
+    cmd := exec.Command("./site.yml")
+    var stdout, stderr []byte
+    var errStdout, errStderr error
+    stdoutIn, _ := cmd.StdoutPipe()
+    stderrIn, _ := cmd.StderrPipe()
+    err := cmd.Start()
+    if err != nil {
+        log.Fatalf("cmd.Start() failed with '%s'\n", err)
+    }
+    var wg sync.WaitGroup
+    wg.Add(1)
+    go func() {
+        stdout, errStdout = kcorelog.CopyAndCapture(os.Stdout, stdoutIn)
+        wg.Done()
+    }()
+    stderr, errStderr = kcorelog.CopyAndCapture(os.Stderr, stderrIn)
+    wg.Wait()
+    err = cmd.Wait()
+    if err != nil {
+        log.Fatalf("cmd.Run() failed with %s\n", err)
+    }
+    if errStdout != nil || errStderr != nil {
+        log.Fatal("failed to capture stdout \n")
+    }
+    errStr := string(stderr)
+    if stderr != nil {
+        fmt.Printf("\nerr:\n%s\n", errStr)
+    }
+}
+
+// Info Log to screen running plugin
+func konductorLoop(repo string) {
+    fmt.Println(" >>  Running Plugin: ", repo)
 }

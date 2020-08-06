@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "github.com:CodeSparta/konductor-go/cmd"
+import "github.com/CodeSparta/konductor-go/cmd"
 
 func main() {
 	cmd.Execute()

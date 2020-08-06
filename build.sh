@@ -1,5 +1,5 @@
-#!/bin/bash -x
-# cobra init --pkg-name github.com/CodeSparta/koffer-go
+#!/bin/bash
+# cobra init --pkg-name github.com/CodeSparta/konductor-go
 # cobra add mirror
 # cobra add bundle
 # go build
@@ -7,8 +7,8 @@
 
 goCmd=$(which go)
 
-rm /bin/koffer 2>/dev/null
-rm -rf /root/koffer 2>/dev/null
+rm /bin/konductor 2>/dev/null
+rm -rf /root/konductor 2>/dev/null
 mkdir -p /tmp/bin
 
 #git stage -A; git commit -m 'testing'; git push origin master
@@ -19,9 +19,7 @@ plugins="
     "github.com/spf13/viper" \
     "github.com/go-git/go-git" \
     "github.com/go-git/go-git/plumbing" \
-    "github.com/CodeSparta/koffer-go/plugins/err" \
-    "github.com/CodeSparta/koffer-go/plugins/log" \
-    "github.com/CodeSparta/koffer-go/plugins/auth" \
+    "github.com/CodeSparta/konductor-go/cmd" \
 "
 for i in ${plugins}; do
   ${goCmd} get -u ${i};
@@ -29,8 +27,7 @@ done
 
 ${goCmd} build
 
-mv ./dev koffer 2>/dev/null
-cp -f koffer /usr/bin/koffer 2>/dev/null
-cp -f koffer /tmp/bin 2>/dev/null
-mv -f koffer /tmp/bin/koffer 2>/dev/null
+mv ./dev ./bin/konductor 2>/dev/null
+cp -f ./bin/konductor /usr/bin/konductor 2>/dev/null
+cp -f ./bin/konductor /tmp/bin/konductor 2>/dev/null
 
