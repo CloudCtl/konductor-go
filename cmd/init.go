@@ -25,14 +25,15 @@ import (
 
 var (
 	home = os.Getenv("HOME")
-	dirPlatform = (home + "deploy")
+	dirPlatform = (home + "/" + "deploy")
 )
 
 // initCmd represents the init command
 var initCmd = &cobra.Command{
 	Use:   "init",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
+	Short: "Konductor init command to prepare and validate deploy config",
+	Long: `
+A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
 Cobra is a CLI library for Go that empowers applications.
