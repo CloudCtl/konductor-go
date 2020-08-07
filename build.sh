@@ -32,6 +32,7 @@ done
 ${goCmd} build
 
 cp -f ./dev /tmp/bin/konductor 2>/dev/null
+ls -lah /tmp/bin
 mv ./dev ./bin/konductor 2>/dev/null
 cp -f ./bin/konductor /usr/bin/konductor 2>/dev/null
 
