@@ -20,12 +20,13 @@ import (
     "fmt"
 
     "github.com/spf13/cobra"
-//    "github.com/spf13/viper"
+    "github.com/spf13/viper"
 )
 
 var (
-	home = os.Getenv("HOME")
-	dirPlatform = (home + "/" + "deploy")
+    home        = os.Getenv("HOME")
+    dirPlatform = (home + "/" + "deploy")
+    configFile  = (dirPlatform + "/" + config.yaml)
 )
 
 // initCmd represents the init command
