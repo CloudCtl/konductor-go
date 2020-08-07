@@ -30,6 +30,8 @@ for i in ${plugins}; do
   ${goCmd} get -u ${i};
 done
 
+go mod init
+
 ${goCmd} build
 
 mv ./dev ./bin/konductor 2>/dev/null
