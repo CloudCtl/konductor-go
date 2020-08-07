@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 # cobra init --pkg-name github.com/CodeSparta/konductor-go
 # cobra add mirror
 # cobra add bundle
