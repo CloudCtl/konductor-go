@@ -47,3 +47,10 @@ func init() {
 
 	// initCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
+
+func readConfig() {
+    if configFile != "" {
+        viper.SetConfigFile(configFile)
+        viper.ReadInConfig() // Find and read the config file
+    }
+}
