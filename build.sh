@@ -11,9 +11,6 @@ rm /bin/konductor 2>/dev/null
 rm -rf /root/konductor 2>/dev/null
 mkdir -p /tmp/bin
 
-#sudo chown $USER ~/.ssh -R
-#git stage -A; git commit -m 'testing'; git push origin master
-
 plugins="
     "golang.org/x/sys/unix" \
     "github.com/spf13/viper" \
@@ -33,6 +30,4 @@ ${goCmd} build
 
 cp -f ./dev /tmp/bin/konductor 2>/dev/null
 ls -lah /tmp/bin
-mv ./dev ./bin/konductor 2>/dev/null
-cp -f ./bin/konductor /usr/bin/konductor 2>/dev/null
 
