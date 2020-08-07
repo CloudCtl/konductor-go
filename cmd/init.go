@@ -18,7 +18,6 @@ package cmd
 import (
     "os"
     "fmt"
-
     "github.com/spf13/cobra"
     "github.com/spf13/viper"
 )
@@ -30,7 +29,6 @@ var (
     configFile  = (dirPlatform + "/" + "config.yaml")
 )
 
-// initCmd represents the init command
 var initCmd = &cobra.Command{
 	Use:   "init",
 	Short: "Konductor init command to prepare and validate deploy config",
