@@ -1,4 +1,5 @@
 #!/bin/bash
+echo $(date) >/tmp/run.log
 echo abc
 sleep 2
 echo abc

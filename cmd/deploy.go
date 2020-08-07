@@ -58,7 +58,7 @@ func core() {
 func CmdPluginRun() {
 
     // Run Plugin
-    fmtPrintf("  >> Running Plugin ./site.yml")
+    fmt.Printf("  >> Running Plugin ./site.yml")
     cmd := exec.Command("./site.yml")
     cmd.Dir = "/root/dev"
     //cmd.Dir = "/root/deploy/ansible/deploy"
