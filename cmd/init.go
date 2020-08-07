@@ -23,7 +23,8 @@ import (
 )
 
 var (
-	dirPlatform  = (os.GetEnv("HOME"), + "deploy")
+	home = os.Getenv("HOME")
+	dirPlatform = (home + "deploy")
 )
 
 // initCmd represents the init command
