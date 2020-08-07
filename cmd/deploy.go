@@ -19,15 +19,15 @@ import (
     "os"
     "log"
     "fmt"
-//  "flag"
     "sync"
     "os/exec"
+//  "flag"
 //  "strings"
 //  "path/filepath"
 
     "github.com/spf13/cobra"
-//  kpullsecret "github.com/CodeSparta/konductor-go/plugins/auth"
     kcorelog "github.com/CodeSparta/konductor-go/plugins/log"
+//  kpullsecret "github.com/CodeSparta/konductor-go/plugins/auth"
 //  "github.com/CodeSparta/konductor-go/plugins/err"
 )
 
@@ -51,14 +51,17 @@ func init() {
 }
 
 func core() {
-//  CmdPluginRun()
+    CmdPluginRun()
 }
 
 // Run Konductor Plugin from site.yml
 func CmdPluginRun() {
 
     // Run Plugin
+    fmtPrintf("  >> Running Plugin ./site.yml")
     cmd := exec.Command("./site.yml")
+    cmd.Dir = "/root/dev"
+    //cmd.Dir = "/root/deploy/ansible/deploy"
     var stdout, stderr []byte
     var errStdout, errStderr error
     stdoutIn, _ := cmd.StdoutPipe()

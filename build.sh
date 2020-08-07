@@ -15,9 +15,9 @@ sudo chown $USER ~/.ssh -R
 git stage -A; git commit -m 'testing'; git push origin master
 
 plugins="
-    "github.com/spf13/cobra" \
     "golang.org/x/sys/unix" \
     "github.com/spf13/viper" \
+    "github.com/spf13/cobra" \
     "github.com/go-git/go-git" \
     "github.com/go-git/go-git/plumbing" \
     "github.com/CodeSparta/konductor-go/cmd" \
