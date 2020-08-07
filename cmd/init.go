@@ -40,9 +40,9 @@ Konductor Init:
   enables stowing the generated materials in encrypted S3 storage.
 `,
     Run: func(cmd *cobra.Command, args []string) {
-        if viper.GetString("name")!=""{
-            name = viper.GetString("name")
-        }
+        fmt.Println("Starting Konductor Init....")
+        core()
+        if viper.GetString("name")!=""{name = viper.GetString("name")}
         fmt.Println(name)
         fmt.Println(configFile)
     },
