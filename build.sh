@@ -14,7 +14,6 @@ mkdir -p /tmp/bin
 #sudo chown $USER ~/.ssh -R
 #git stage -A; git commit -m 'testing'; git push origin master
 
-export GO111MODULE=on
 plugins="
     "golang.org/x/sys/unix" \
     "github.com/spf13/viper" \
@@ -29,8 +28,6 @@ plugins="
 for i in ${plugins}; do
   ${goCmd} get -u ${i};
 done
-
-go mod init
 
 ${goCmd} build
 
