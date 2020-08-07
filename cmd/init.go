@@ -26,7 +26,7 @@ import (
 var (
     home        = os.Getenv("HOME")
     dirPlatform = (home + "/" + "deploy")
-    configFile  = (dirPlatform + "/" + config.yaml)
+    configFile  = (dirPlatform + "/" + "config.yaml")
 )
 
 // initCmd represents the init command
@@ -39,7 +39,7 @@ Konductor Init:
   enables stowing the generated materials in encrypted S3 storage.
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(dirPlatform)
+		fmt.Println(configFile)
 	},
 }
 
