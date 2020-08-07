@@ -11,8 +11,8 @@ rm /bin/konductor 2>/dev/null
 rm -rf /root/konductor 2>/dev/null
 mkdir -p /tmp/bin
 
-sudo chown $USER ~/.ssh -R
-git stage -A; git commit -m 'testing'; git push origin master
+#sudo chown $USER ~/.ssh -R
+#git stage -A; git commit -m 'testing'; git push origin master
 
 plugins="
     "golang.org/x/sys/unix" \
