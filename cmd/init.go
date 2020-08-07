@@ -33,12 +33,10 @@ var initCmd = &cobra.Command{
 	Use:   "init",
 	Short: "Konductor init command to prepare and validate deploy config",
 	Long: `
-A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+Konductor Init:
+  Init provides deployment configuration file build guidance and 
+  enables stowing the generated materials in encrypted S3 storage.
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(dirPlatform)
 	},
