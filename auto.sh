@@ -6,4 +6,6 @@ sudo /usr/bin/podman run \
     --volume $(pwd):/root/dev:z \
   docker.io/ocpredshift/red-gotools
     
+ls -lah $(pwd)
+ls -lah $(pwd)/bin
 exit 0
