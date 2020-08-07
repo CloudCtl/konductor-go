@@ -44,6 +44,7 @@ Konductor Init:
             name = viper.GetString("name")
         }
         fmt.Println(name)
+        fmt.Println(configFile)
     },
 }
 
