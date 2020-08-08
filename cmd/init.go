@@ -85,9 +85,9 @@ type Configuration struct {
 }
 
 type AuthConfiguration struct {
-    Keys bool
-    key string
-    Secret string
+        Keys bool
+        Key string
+        Secret string
 }
 
 type TaskConfiguration struct {
@@ -101,3 +101,4 @@ type CloudConfiguration struct {
 	Region string
 	VpcId string `mapstructure:"vpc-id"`
 }
+
