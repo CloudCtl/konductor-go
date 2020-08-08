@@ -57,7 +57,7 @@ func CoreInit() {
         log.Fatalf("Error reading config file, %s", err)
     }
     err := viper.Unmarshal(&configuration); err != nil{
-        log.Fatalf("Unable to decode konductor.yaml, %v", err)
+        log.Fatalf("unable to decode into struct, %v", err)
     }
 
     logPrintf("Task: %s", configyaml.Task.Cmd)
