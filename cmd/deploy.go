@@ -42,7 +42,7 @@ Konductor Engine Init:
   restricted & airgap environment capabilities.
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		CoreInit()
+		CoreDeploy()
 	},
 }
 
@@ -50,7 +50,7 @@ func init() {
 	rootCmd.AddCommand(deployCmd)
 }
 
-func CoreInit() {
+func CoreDeploy() {
     CmdPluginRun()
 }
 
