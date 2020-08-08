@@ -28,6 +28,7 @@ var (
     subcmd string
     home        = os.Getenv("HOME")
     configFile = ("konductor.yaml")
+    configyaml Configuration
 )
 
 var initCmd = &cobra.Command{
@@ -48,9 +49,10 @@ func CoreInit() {
     viper.Set("Verbose", true)
     viper.SetConfigType("yaml")
     viper.SetConfigName("konductor.yaml")
-    viper.AddConfigPath("${HOME}/konductor.yaml")
+
     viper.AddConfigPath(".")
-    var configyaml Configuration
+    viper.AddConfigPath("${HOME}/konductor.yaml")
+
 
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file, %s", err)
@@ -60,11 +62,13 @@ func CoreInit() {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
 
-    log.Printf("Task: %s", configyaml.Task.Cmd)
-    log.Printf("Task: %s", configyaml.Task.Sub)
-    log.Printf("AWS Key: %s", configyaml.Cloud.Key)
-    log.Printf("AWS Region: %s", configyaml.Cloud.Region)
-    log.Printf("AWS VPC ID: %s", configyaml.Cloud.VpcId)
+    log.Printf("AWS VPC ID:   %s", configyaml.Cloud.VpcId)
+    log.Printf("AWS Region:   %s", configyaml.Cloud.Region)
+    log.Printf("AWS Key:      %s", configyaml.Cloud.Secret)
+    log.Printf("AWS Key:      %s", configyaml.Cloud.Key)
+
+    log.Printf("Task Command: %s", configyaml.Task.Cmd)
+    log.Printf("Task Sub Cmd: %s", configyaml.Task.Sub)
 }
 
 func init() {
@@ -73,8 +77,8 @@ func init() {
 }
 
 type Configuration struct {
-	Task TaskConfiguration
 	Cloud CloudConfiguration
+	Task TaskConfiguration
 }
 
 type TaskConfiguration struct {
