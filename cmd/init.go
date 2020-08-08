@@ -62,14 +62,12 @@ func CoreInit() {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
 
-    fmt.Printf("AWS Region:     %s \n", configyaml.Cloud.Region)
-    fmt.Printf("AWS VPC ID:     %s \n", configyaml.Cloud.VpcId)
-    fmt.Println("\n")
-    fmt.Printf("AWS Key ID::    %s \n", configyaml.Auth.Key)
-    fmt.Printf("AWS Key Secret: %s \n", configyaml.Auth.Secret)
-    fmt.Println("\n")
     fmt.Printf("Task Command:   %s \n", configyaml.Task.Cmd)
     fmt.Printf("Task Sub Cmd:   %s \n", configyaml.Task.Sub)
+    fmt.Printf("AWS Region:     %s \n", configyaml.Cloud.Region)
+    fmt.Printf("AWS VPC ID:     %s \n", configyaml.Cloud.VpcId)
+    fmt.Printf("AWS Key ID:     %s \n", configyaml.Auth.Key)
+    fmt.Printf("AWS Secret:     %s \n", configyaml.Auth.Secret)
 }
 
 func init() {
