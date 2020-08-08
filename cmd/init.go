@@ -49,8 +49,8 @@ func CoreInit() {
     viper.AddConfigPath(".")
     err := viper.ReadInConfig()
     if err != nil {
-        fmt.Println(err)
-        panic()
+        fmt.Println("viper.ReadInConfig failed!")
+        panic(err)
     }
     name := viper.Get("name")
     fmt.Println(name)
