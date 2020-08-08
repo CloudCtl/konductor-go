@@ -61,7 +61,10 @@ func CoreInit() {
     }
     fmt.Printf("Sparta is running: %s \n", task)
     subcmd := viper.Get("cmd.sub")
-    fmt.Printf(task + " is executing" + ": %s \n", subcmd)
+    if subcmd == nil { // Handle errors reading the value 
+        panic(fmt.Errorf("Fatal error! 'subcmd' has no value. \n"))
+    }
+    fmt.Printf(task + " is executing: %s \n", subcmd)
 }
 
 func init() {
