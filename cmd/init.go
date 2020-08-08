@@ -79,7 +79,13 @@ func init() {
 type Configuration struct {
     Cloud CloudConfiguration
     Task TaskConfiguration
+    Auth AuthConfiguration `mapstructure:"provider-auth"`
+}
 
+type TaskConfiguration struct {
+    AuthKeys bool
+    Authkey string
+    AuthSecret string
 }
 
 type TaskConfiguration struct {

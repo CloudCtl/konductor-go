@@ -6,7 +6,7 @@ cloud:
   region: "us-gov-west-1"
   vpc-id: "iamgroot"
   vpcname: "iamgroot"
-cloud-auth:
+provider-auth:
   keys: true
   key: "qewrasdf"
   secret: "1234QWER"
