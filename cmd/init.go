@@ -54,7 +54,10 @@ func CoreInit() {
     if err != nil { // Handle errors reading the config file
         panic(fmt.Errorf("Fatal error config file: %s \n", err))
     }
-    name := viper.GetString("user.name")
+    name := viper.Get("user.name")
+    if name == nil { // Handle errors reading the value 
+        fmt.Printf(fmt.Errorf("Fatal error! 'name' has no value: %s \n", name))
+    }
     fmt.Println(name)
 }
 
