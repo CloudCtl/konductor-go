@@ -25,8 +25,8 @@ import (
 var (
     name string
     home        = os.Getenv("HOME")
-    dirPlatform = (home + "/" + "deploy")
-    configFile  = (dirPlatform + "/" + "config.yaml")
+//  dirPlatform = (home + "/" + "deploy")
+//  configFile  = (dirPlatform + "/" + "config.yaml")
 )
 
 var initCmd = &cobra.Command{
@@ -49,15 +49,15 @@ func CoreInit() {
     fmt.Println(configFile)
 }
 
-func init() {
-	rootCmd.AddCommand(initCmd)
-
-	// initCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-}
-
 func readConfig() {
     if configFile != "" {
         viper.SetConfigFile(configFile)
         viper.ReadInConfig() // Find and read the config file
     }
 }
+
+func init() {
+	rootCmd.AddCommand(initCmd)
+	// initCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}
+
