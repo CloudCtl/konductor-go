@@ -54,11 +54,11 @@ func CoreInit() {
     if err != nil { // Handle errors reading the config file
         panic(fmt.Errorf("Fatal error config file: %s \n", err))
     }
-    size := viper.Get("size")
-    if size == "" { // Handle errors reading the value 
-        fmt.Println(fmt.Errorf("Fatal error! 'size' has no value. \n"))
+    task := viper.Get("task")
+    if task == "" { // Handle errors reading the value 
+        fmt.Println(fmt.Errorf("Fatal error! 'task' has no value. \n"))
     }
-    fmt.Printf("User size is: %s \n", size)
+    fmt.Printf("Sparta is running: %s \n", task)
 }
 
 func init() {
