@@ -27,9 +27,7 @@ var (
     name string
     subcmd string
     home        = os.Getenv("HOME")
-    configFile = ("config.yaml")
-//  dirPlatform = (home + "/" + "deploy")
-//  configFile  = (dirPlatform + "/" + "config.yaml")
+    configFile = ("konductor.yaml")
 )
 
 var initCmd = &cobra.Command{
@@ -52,7 +50,7 @@ func CoreInit() {
     viper.SetConfigName("konductor.yaml")
     viper.AddConfigPath("${HOME}/konductor.yaml")
     viper.AddConfigPath(".")
-    var configyaml config.Configuration
+    var configyaml Configuration
 
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file, %s", err)
