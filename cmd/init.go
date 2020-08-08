@@ -51,20 +51,17 @@ func CoreInit() {
     viper.SetConfigType("yaml")
     viper.AddConfigPath("${HOME}/konductor.yaml")
     viper.AddConfigPath(".")
-    err := viper.ReadInConfig() // Find and read the config file
-    if err != nil { // Handle errors reading the config file
-        panic(fmt.Errorf("Fatal error config file: %s \n", err))
+    var configyaml config.Configuration
+
+    if err := viper.ReadInConfig(); err != nil {
+        log.Fatalf("Error reading config file, %s", err)
     }
-    task := viper.Get("task")
-    if task == nil { // Handle errors reading the value 
-        panic(fmt.Errorf("Fatal error! 'task' has no value. \n"))
+    err := viper.Unmarshal(&configuration); err != nil{
+        log.Fatalf("Unable to decode konductor.yaml, %v", err)
     }
-    fmt.Printf("Sparta is running: %s \n", task)
-    subcmd := viper.Get("cmd.sub")
-    if subcmd == nil { // Handle errors reading the value 
-        panic(fmt.Errorf("Fatal error! 'subcmd' has no value. \n"))
-    }
-    fmt.Printf(task + " is executing: %s \n", subcmd)
+
+    logPrintf("Task: %s", configyaml.Task.Cmd)
+    logPrintf("AWS Region: %s", configyaml.Cloud.Region)
 }
 
 func init() {
@@ -72,3 +69,19 @@ func init() {
 	// initCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
+type Configuration struct {
+	Task TaskConfiguration
+	Cloud CloudConfiguration
+}
+
+type TaskConfiguration struct {
+	Cmd string
+	Sub string
+}
+
+type CloudConfiguration struct {
+	Key string
+	Secret string
+	Region string
+	vpc_id string
+}
