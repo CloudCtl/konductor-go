@@ -45,12 +45,13 @@ Konductor Init:
 }
 
 func CoreInit() {
-    viper.SetConfigName("config.yaml")
+    viper.SetConfigName("konductor.yaml")
+    viper.SetConfigType("yaml")
+    viper.AddConfigPath("${HOME}/konductor.yaml")
     viper.AddConfigPath(".")
-    err := viper.ReadInConfig()
-    if err != nil {
-        fmt.Println("viper.ReadInConfig failed!")
-        panic(err)
+    err := viper.ReadInConfig() // Find and read the config file
+    if err != nil { // Handle errors reading the config file
+        panic(fmt.Errorf("Fatal error config file: %s \n", err))
     }
     name := viper.Get("name")
     fmt.Println(name)
