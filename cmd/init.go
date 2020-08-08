@@ -55,7 +55,7 @@ func CoreInit() {
         panic(fmt.Errorf("Fatal error config file: %s \n", err))
     }
     task := viper.Get("task")
-    if task == "" { // Handle errors reading the value 
+    if task == nil { // Handle errors reading the value 
         fmt.Println(fmt.Errorf("Fatal error! 'task' has no value. \n"))
     }
     fmt.Printf("Sparta is running: %s \n", task)
