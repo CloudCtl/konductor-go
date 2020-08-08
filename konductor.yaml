@@ -1,1 +1,3 @@
-role: konductor 
+task: konductor 
+cmd:
+  - sub: init
