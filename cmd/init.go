@@ -39,11 +39,11 @@ Konductor Init:
 `,
     Run: func(cmd *cobra.Command, args []string) {
         fmt.Println("Starting Konductor Init....")
-        core()
+        CoreInit()
     },
 }
 
-func core() {
+func CoreInit() {
     if viper.GetString("name")!=""{name = viper.GetString("name")}
     fmt.Println(name)
     fmt.Println(configFile)
