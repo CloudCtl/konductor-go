@@ -61,6 +61,7 @@ func CoreInit() {
     }
 
     log.Printf("Task: %s", configyaml.Task.Cmd)
+    log.Printf("Task: %s", configyaml.Task.Sub)
     log.Printf("AWS Key: %s", configyaml.Cloud.Key)
     log.Printf("AWS Region: %s", configyaml.Cloud.Region)
     log.Printf("AWS VPC ID: %s", configyaml.Cloud.VpcId)
