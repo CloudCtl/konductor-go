@@ -50,7 +50,7 @@ func CoreInit() {
 }
 
 func readConfig() {
-    var = config.yaml
+    var configFile = ("config.yaml")
     if configFile != "" {
         viper.SetConfigFile(configFile)
         viper.ReadInConfig() // Find and read the config file
