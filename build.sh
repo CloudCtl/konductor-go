@@ -12,16 +12,18 @@ rm -rf /root/konductor 2>/dev/null
 mkdir -p /tmp/bin
 
 plugins="
-    "golang.org/x/sys/unix" \
-    "github.com/spf13/cobra" \
-    "github.com/spf13/viper" \
-    "github.com/go-git/go-git" \
-    "github.com/go-git/go-git/plumbing" \
+    "github.com/mitchellh/mapstructure" \
     "github.com/CodeSparta/konductor-go/cmd" \
     "github.com/CodeSparta/konductor-go/plugins/err" \
     "github.com/CodeSparta/konductor-go/plugins/log" \
     "github.com/CodeSparta/konductor-go/plugins/auth" \
 "
+#   "golang.org/x/sys/unix" \
+#   "github.com/spf13/cobra" \
+#   "github.com/spf13/viper" \
+#   "github.com/go-git/go-git" \
+#   "github.com/go-git/go-git/plumbing" \
+
 for i in ${plugins}; do
   ${goCmd} get -u ${i};
 done
