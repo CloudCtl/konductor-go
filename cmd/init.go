@@ -45,7 +45,9 @@ Konductor Init:
 }
 
 func CoreInit() {
-    if viper.GetString("name")!=""{name = viper.GetString("name")}
+    if viper.GetString("name")!=""{
+        name = viper.GetString("name")
+    }
     fmt.Println(name)
     fmt.Println(configFile)
 }
