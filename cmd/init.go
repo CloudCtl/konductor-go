@@ -45,6 +45,7 @@ Konductor Init:
 }
 
 func CoreInit() {
+    var runner_name string
     if viper.GetString("name")!=""{
         runner_name = viper.GetString("name")
     }
