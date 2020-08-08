@@ -24,6 +24,7 @@ import (
 
 var (
     name string
+    subcmd string
     home        = os.Getenv("HOME")
     configFile = ("config.yaml")
 //  dirPlatform = (home + "/" + "deploy")
