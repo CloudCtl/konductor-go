@@ -12,12 +12,12 @@ rm -rf /root/konductor 2>/dev/null
 mkdir -p /tmp/bin
 
 plugins="
-    "github.com/mitchellh/mapstructure" \
     "github.com/CodeSparta/konductor-go/cmd" \
     "github.com/CodeSparta/konductor-go/plugins/err" \
     "github.com/CodeSparta/konductor-go/plugins/log" \
     "github.com/CodeSparta/konductor-go/plugins/auth" \
 "
+#   "github.com/mitchellh/mapstructure" \
 #   "golang.org/x/sys/unix" \
 #   "github.com/spf13/cobra" \
 #   "github.com/spf13/viper" \

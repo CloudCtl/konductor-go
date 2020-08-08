@@ -82,7 +82,7 @@ type Configuration struct {
     Auth AuthConfiguration `mapstructure:"provider-auth"`
 }
 
-type TaskConfiguration struct {
+type AuthConfiguration struct {
     AuthKeys bool
     Authkey string
     AuthSecret string
