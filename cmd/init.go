@@ -45,19 +45,15 @@ Konductor Init:
 }
 
 func CoreInit() {
-    readConfig()
-    if viper.GetString("name")!=""{
-        name = viper.GetString("name")
+    viper.SetConfigName("config.yaml")
+    viper.AddConfigPath(".")
+    err := viper.ReadInConfig()
+    if err != nil {
+        fmt.Println(err)
+        panic()
     }
+    name := viper.Get("name")
     fmt.Println(name)
-    fmt.Println(configFile)
-}
-
-func readConfig() {
-    if configFile != "" {
-        viper.SetConfigFile(configFile)
-        viper.ReadInConfig() // Find and read the config file
-    }
 }
 
 func init() {
