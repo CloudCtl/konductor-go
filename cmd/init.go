@@ -25,6 +25,7 @@ import (
 var (
     name string
     home        = os.Getenv("HOME")
+    configFile = ("config.yaml")
 //  dirPlatform = (home + "/" + "deploy")
 //  configFile  = (dirPlatform + "/" + "config.yaml")
 )
@@ -50,7 +51,6 @@ func CoreInit() {
 }
 
 func readConfig() {
-    var configFile = ("config.yaml")
     if configFile != "" {
         viper.SetConfigFile(configFile)
         viper.ReadInConfig() // Find and read the config file
