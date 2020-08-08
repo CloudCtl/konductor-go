@@ -1,7 +1,7 @@
 task:
   cmd: "konductor"
   sub: "init"
-aws:
+cloud:
   key: "qewrasdf"
   secret: "1234QWER"
   region: "us-gov-west-1"
