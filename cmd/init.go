@@ -21,7 +21,7 @@ import (
     "log"
     "github.com/spf13/cobra"
     "github.com/spf13/viper"
-    "github.com/mitchellh/mapstructure"
+//  "github.com/mitchellh/mapstructure"
 )
 
 var (
@@ -77,8 +77,9 @@ func init() {
 }
 
 type Configuration struct {
-	Cloud CloudConfiguration
-	Task TaskConfiguration
+    Cloud CloudConfiguration
+    Task TaskConfiguration
+
 }
 
 type TaskConfiguration struct {
