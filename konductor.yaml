@@ -1,9 +1,9 @@
 task:
-  cmd: konductor
-  sub: init
+  cmd: "konductor"
+  sub: "init"
 aws:
-  key: qewrasdf
-  secret: 1234QWER
-  region: us-gov-west-1
-  vpc_id: iamgroot
+  key: "qewrasdf"
+  secret: "1234QWER"
+  region: "us-gov-west-1"
+  vpc_id: "iamgroot"
 

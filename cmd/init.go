@@ -61,7 +61,9 @@ func CoreInit() {
     }
 
     log.Printf("Task: %s", configyaml.Task.Cmd)
+    log.Printf("AWS Key: %s", configyaml.Cloud.Key)
     log.Printf("AWS Region: %s", configyaml.Cloud.Region)
+    log.Printf("AWS VPC ID: %s", configyaml.Cloud.VpcId)
 }
 
 func init() {
@@ -83,5 +85,5 @@ type CloudConfiguration struct {
 	Key string
 	Secret string
 	Region string
-	vpc_id string
+	VpcId string
 }
