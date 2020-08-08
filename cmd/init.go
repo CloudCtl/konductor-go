@@ -58,7 +58,7 @@ func CoreInit() {
     if name == "" { // Handle errors reading the value 
         fmt.Println(fmt.Errorf("Fatal error! 'name' has no value. \n"))
     }
-    fmt.Println(name)
+    fmt.Printf("User name is: %s \n", name)
 }
 
 func init() {
