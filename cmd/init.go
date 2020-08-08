@@ -56,7 +56,7 @@ func CoreInit() {
     }
     name := viper.Get("user.name")
     if name == nil { // Handle errors reading the value 
-        fmt.Printf(fmt.Errorf("Fatal error! 'name' has no value: %s \n", name))
+        fmt.Println(fmt.Errorf("Fatal error! 'name' has no value. \n"))
     }
     fmt.Println(name)
 }
