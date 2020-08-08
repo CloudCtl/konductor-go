@@ -18,6 +18,7 @@ package cmd
 import (
     "os"
     "fmt"
+    "log"
     "github.com/spf13/cobra"
     "github.com/spf13/viper"
 )
@@ -47,8 +48,8 @@ Konductor Init:
 
 func CoreInit() {
     viper.Set("Verbose", true)
-    viper.SetConfigName("konductor.yaml")
     viper.SetConfigType("yaml")
+    viper.SetConfigName("konductor.yaml")
     viper.AddConfigPath("${HOME}/konductor.yaml")
     viper.AddConfigPath(".")
     var configyaml config.Configuration
@@ -61,8 +62,8 @@ func CoreInit() {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
 
-    logPrintf("Task: %s", configyaml.Task.Cmd)
-    logPrintf("AWS Region: %s", configyaml.Cloud.Region)
+    log.Printf("Task: %s", configyaml.Task.Cmd)
+    log.Printf("AWS Region: %s", configyaml.Cloud.Region)
 }
 
 func init() {
