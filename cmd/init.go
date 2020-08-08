@@ -45,6 +45,7 @@ Konductor Init:
 }
 
 func CoreInit() {
+    viper.Set("Verbose", true)
     viper.SetConfigName("konductor.yaml")
     viper.SetConfigType("yaml")
     viper.AddConfigPath("${HOME}/konductor.yaml")
