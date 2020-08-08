@@ -2,8 +2,12 @@ task:
   cmd: "konductor"
   sub: "init"
 cloud:
+  provider: "aws"
+  region: "us-gov-west-1"
+  vpc-id: "iamgroot"
+  vpcname: "iamgroot"
+cloud_auth:
+  keys: true
   key: "qewrasdf"
   secret: "1234QWER"
-  region: "us-gov-west-1"
-  vpc_id: "iamgroot"
 

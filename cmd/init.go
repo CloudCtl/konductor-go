@@ -89,5 +89,5 @@ type CloudConfiguration struct {
 	Key string
 	Secret string
 	Region string
-	VpcId string
+	Vpc-Id string `mapstructure:"vpc-id"`
 }
