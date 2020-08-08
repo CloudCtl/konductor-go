@@ -96,8 +96,6 @@ type TaskConfiguration struct {
 }
 
 type CloudConfiguration struct {
-	Key string
-	Secret string
 	Region string
 	VpcId string `mapstructure:"vpc-id"`
 }
