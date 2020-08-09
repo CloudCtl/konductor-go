@@ -23,18 +23,6 @@ import (
     "github.com/spf13/viper"
 )
 
-var (
-    name string
-    subcmd string
-    home       = os.Getenv("HOME")
-    configFile = ("sparta.yaml")
-    configyaml Configuration
-)
-
-func init() {
-	rootCmd.AddCommand(initCmd)
-}
-
 var initCmd = &cobra.Command{
 	Use:   "init",
 	Short: "Konductor init command to prepare and validate deploy config",
@@ -48,6 +36,18 @@ Konductor Init:
         CoreRun()
     },
 }
+
+func init() {
+	rootCmd.AddCommand(initCmd)
+}
+
+var (
+    name string
+    subcmd string
+    home       = os.Getenv("HOME")
+    configFile = ("sparta.yaml")
+    configyaml Configuration
+)
 
 func CoreRun() {
     CoreParse()
