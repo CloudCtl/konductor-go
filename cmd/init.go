@@ -57,7 +57,7 @@ func CoreRun() {
 
 func CoreInfo() {
 
-    subnetslice := []string{configyaml.Subnets.Private}
+    subnetslice := []byte{configyaml.Subnets.Private}
     subnetlist := strings.Join(subnetslice, "")
     runvars := "\n" +
       "  Openshift Version: " + configyaml.Openshift.Version  + "\n" +
