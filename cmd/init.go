@@ -71,7 +71,6 @@ func CoreInit() {
 "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
 "  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
 
-    subnets := make(map[string}configyaml.Subnets.Private)
     fmt.Println(configyaml.Subnets.Private)
 }
 
@@ -104,7 +103,7 @@ type CloudConfiguration struct {
     CidrPrivate   string `mapstructure:"cidr-private"`
 }
 
-type SubnetsConfiguration struct {
+type SubnetsConfiguration map[string] {
     Private       interface{} `mapstructure:"private"`
     Public        interface{} `mapstructure:"public"`
 }
