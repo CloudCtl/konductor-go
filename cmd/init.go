@@ -69,51 +69,49 @@ func CoreInit() {
     fmt.Println( "INFO:" + "\n" +
 "  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
 "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
-"  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
-
-    fmt.Println( "INFO:" + "\n" +
-"  VPC Private Subnets: " + configyaml.Subnets.Private + "\n" )
+"  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" +
+"  VPC Private Subnets: " + configyaml.Subnets.Private        + "\n" )
 }
 
 type Configuration struct {
-    Openshift OpenshiftConfiguration
-    Cluster   ClusterConfiguration
-    Cloud     CloudConfiguration
-    Auth      AuthConfiguration `mapstructure:"provider-auth"`
-    Redsord   RedSordConfiguration
-    Subnets   SubnetsConfiguration
+    Auth          AuthConfiguration `mapstructure:"provider-auth"`
+    Cloud         CloudConfiguration
+    Redsord       RedSordConfiguration
+    Subnets       SubnetsConfiguration
+    Cluster       ClusterConfiguration
+    Openshift     OpenshiftConfiguration
 }
 
 type OpenshiftConfiguration struct {
-    Version string
+    Version       string
 }
 
 type ClusterConfiguration struct {
-    Target string
-    VpcName string `mapstructure:"vpc-name"`
-    ClusterName string `mapstructure:"cluster-name"`
-    BaseDomain string `mapstructure:"base-domain"`
+    Target        string
+    VpcName       string `mapstructure:"vpc-name"`
+    ClusterName   string `mapstructure:"cluster-name"`
+    BaseDomain    string `mapstructure:"base-domain"`
     ClusterDomain string `mapstructure:"cluster-domain"`
-    AmiId string `mapstructure:"ami-id"`
+    AmiId         string `mapstructure:"ami-id"`
 }
 
 type CloudConfiguration struct {
-    Provider string
-    Region string
-    VpcId string `mapstructure:"vpc-id"`
-    CidrPrivate string `mapstructure:"cidr-private"`
+    Provider      string
+    Region        string
+    VpcId         string `mapstructure:"vpc-id"`
+    CidrPrivate   string `mapstructure:"cidr-private"`
 }
 
 type SubnetsConfiguration struct {
-    Private string `mapstructure:"private"`
+    Private       string `mapstructure:"private"`
 }
 
 type AuthConfiguration struct {
-    Keys bool
-    Key string
-    Secret string
+    Keys          bool
+    Key           string
+    Secret        string
 }
 
 type RedSordConfiguration struct {
-    Redsord bool
+    Redsord       bool
 }
