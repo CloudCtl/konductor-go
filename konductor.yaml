@@ -25,7 +25,7 @@ subnets:
 provider-auth:
   keys: true
   key: "jlInQW7HYrTgtkzQBs2X5FnL35yPVz1qnd/fvHj5"
-  secret: "1234QWER"
+  secret: "AKIA3L76BYEU5WQYKNWD"
 
 redsord:
   enabled: false

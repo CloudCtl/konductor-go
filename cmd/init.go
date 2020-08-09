@@ -103,7 +103,7 @@ type CloudConfiguration struct {
 }
 
 type ListConfiguration struct {
-    SubnetPrivateIds []string `mapstructure:"subnets"`
+    SubnetPrivateIds []byte `mapstructure:"subnets"`
 }
 
 type AuthConfiguration struct {
