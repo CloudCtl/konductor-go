@@ -80,6 +80,7 @@ func CoreParse() {
     if err != nil {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
+
     viper.SetDefault("configyaml.Cloud.CidrPrivate", "172.22.0.0/24")
     return
 }
