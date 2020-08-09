@@ -66,8 +66,12 @@ func CoreInfo() {
       "  AWS Subnet IDs:     "
 
     fmt.Println(runvars)
-    fmt.Println(target)
     fmt.Println(configyaml.Subnets.Private)
+
+    target := viper.GetString(configyaml.Cluster.Target string)
+    viper.BindPflag("configyaml.Cluster.Target", initCmd.Flags().Lookup("target"))
+    flag.Parse()
+    fmt.Println(target)
 }
 
 func CoreParse() {
@@ -77,9 +81,6 @@ func CoreParse() {
     viper.AddConfigPath("${HOME}/sparta.yaml")
     viper.AddConfigPath(".")
 
-    target := viper.GetString(configyaml.Cluster.Target string)
-    viper.BindPflag("configyaml.Cluster.Target", initCmd.Flags().Lookup("target"))
-    flag.Parse()
 
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file, %s", err)
