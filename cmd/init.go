@@ -60,7 +60,8 @@ func CoreInfo() {
     var runvars   string = "\n" +
       "  Openshift Version: " + configyaml.Openshift.Version  + "\n" +
       "  AWS Secret:        " + configyaml.Auth.Secret        + "\n" +
-      "  AWS Subnet CIDR:   " + configyaml.Cloud.CidrPrivate  + "\n"
+      "  AWS Subnet CIDR:   " + configyaml.Cloud.CidrPrivate  + "\n" +
+      "  AWS Subnet IDs:    "
 
     kcorelog.Info(runvars)
     fmt.Println(configyaml.Subnets.Private)
