@@ -50,6 +50,10 @@ Konductor Init:
 }
 
 func CoreRun() {
+    CoreParse()
+    CoreInfo()
+}
+func CoreInfo() {
     fmt.Println( "INFO:" + "\n" +
     "  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
     "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
@@ -72,6 +76,7 @@ func CoreParse() {
     if err != nil {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
+    return
 }
 
 type Configuration struct {
