@@ -36,7 +36,7 @@ var initCmd = &cobra.Command{
 	Short: "Konductor init command to prepare and validate deploy config",
 	Long: `
 Konductor Init:
-  Init provides deployment configuration file build guidance and 
+  Init provides sparta configuration file creation guidance and 
   enables stowing the generated materials in encrypted S3 storage.
 `,
     Run: func(cmd *cobra.Command, args []string) {
