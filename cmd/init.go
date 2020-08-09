@@ -57,8 +57,9 @@ func CoreRun() {
 func CoreInfo() {
     var runvars string = "\n" +
       "  Openshift Version: " + configyaml.Openshift.Version  + "\n" +
-      "  AWS Secret:        " + configyaml.Auth.Secret        + "\n" +
-      "  AWS Secret:        " + configyaml.Cloud.CidrPrivate  + "\n"
+      "  AWS Subnet CIDR:   " + configyaml.Cloud.CidrPrivate  + "\n" +
+      "  AWS Subnet IDs:    " + configyaml.Cloud.CidrPrivate  + "\n" +
+      "  AWS Secret:        " + configyaml.Auth.Secret        + "\n"
     fmt.Println(runvars)
     fmt.Println(configyaml.Subnets.Private)
 }
