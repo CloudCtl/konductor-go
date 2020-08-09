@@ -63,7 +63,7 @@ func CoreInfo() {
       "  AWS Subnet CIDR:   " + configyaml.Cloud.CidrPrivate  + "\n" +
       "  AWS Subnet IDs:    "
 
-    kcorelog(runvars)
+    kcorelog.Info(runvars)
     fmt.Println(configyaml.Subnets.Private)
 }
 
