@@ -59,7 +59,7 @@ func CoreInfo() {
       "  Openshift Version: " + configyaml.Openshift.Version  + "\n" +
       "  AWS Secret:        " + configyaml.Auth.Secret        + "\n" +
       "  AWS Subnet CIDR:   " + configyaml.Cloud.CidrPrivate  + "\n" +
-      "  AWS Subnet IDs:    " + subnetids + "\n"
+      "  AWS Subnet IDs:    "
     fmt.Println(runvars)
     fmt.Println(configyaml.Subnets.Private)
 }
