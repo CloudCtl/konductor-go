@@ -84,6 +84,10 @@ func CoreParse() {
     return
 }
 
+func ViperDefaults (
+	viper.SetDefault("configyaml.Cloud.CidrPrivate", "192.168.22.0/24")
+)
+
 type Configuration struct {
     Auth          AuthConfiguration `mapstructure:"provider-auth"`
     Cloud         CloudConfiguration
