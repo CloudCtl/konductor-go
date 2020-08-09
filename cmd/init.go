@@ -44,7 +44,7 @@ Konductor Init:
   enables stowing the generated materials in encrypted S3 storage.
 `,
     Run: func(cmd *cobra.Command, args []string) {
-        fmt.Println("Starting Konductor Init....")
+        fmt.Println("Starting Konductor Init.... \n")
         CoreRun()
     },
 }
@@ -53,6 +53,7 @@ func CoreRun() {
     CoreParse()
     CoreInfo()
 }
+
 func CoreInfo() {
     fmt.Println( "INFO:" + "\n" +
     "  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
