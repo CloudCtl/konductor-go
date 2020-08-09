@@ -76,7 +76,7 @@ func CoreParse() {
     viper.AddConfigPath(".")
 
     initCmd.Flags().StringP(&target, "target", "t", "govcloud", "Set Target Environment")
-    viper.BindPflag("target", initCmd.Flags().Lookup("target"))
+    viper.BindPflag("configyaml.Cluster.Target", initCmd.Flags().Lookup("target"))
 
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file, %s", err)
