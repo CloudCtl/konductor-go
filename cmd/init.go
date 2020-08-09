@@ -68,8 +68,7 @@ func CoreInit() {
 
     fmt.Printf( "INFO:" +
 "  Openshift Version:  %s" + configyaml.Ocp.OcpVersion +
-"  AWS Secret:         %s" + configyaml.Auth.Secret + "\n"
-)
+"  AWS Secret:         %s" + configyaml.Auth.Secret + "\n")
 }
 
 type Configuration struct {
