@@ -103,7 +103,7 @@ type CloudConfiguration struct {
     CidrPrivate   string `mapstructure:"cidr-private"`
 }
 
-type SubnetsConfiguration map[string]string{
+type SubnetsConfiguration map[string]interface{
     Private
     Public
 /*
