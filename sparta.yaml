@@ -13,7 +13,7 @@ cloud:
   provider: aws
   region: us-gov-west-1
   vpc-id: vpc-0aef6256b40f30778
-# cidr-private: 10.0.0.0/24
+  cidr-private: 10.0.0.0/24
 
 subnets:
   private:
