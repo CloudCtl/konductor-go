@@ -51,6 +51,10 @@ var (
 )
 
 func CoreRun() {
+
+    viper.SetDefault("configyaml.Cluster.Target", "govcloud")
+    viper.SetDefault(configyaml.Cloud.CidrPrivate, "172.22.0.0/24")
+
     CoreParse()
     CoreInfo()
 }
