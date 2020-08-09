@@ -103,7 +103,7 @@ type CloudConfiguration struct {
 }
 
 type SubnetsConfiguration struct {
-    Private       map[string]
+    Private       map[string][]string
 }
 
 type AuthConfiguration struct {
