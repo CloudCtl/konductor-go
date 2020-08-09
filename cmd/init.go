@@ -77,7 +77,7 @@ type Configuration struct {
     Auth          AuthConfiguration `mapstructure:"provider-auth"`
     Cloud         CloudConfiguration
     Redsord       RedSordConfiguration
-    Subnets       SubnetsConfiguration map[string][]string
+    Subnets       SubnetsConfiguration
     Cluster       ClusterConfiguration
     Openshift     OpenshiftConfiguration
 }
@@ -102,11 +102,9 @@ type CloudConfiguration struct {
     CidrPrivate   string `mapstructure:"cidr-private"`
 }
 
-/*
 type SubnetsConfiguration struct {
-    Private       
+    Private       map[string][]string
 }
-*/
 
 type AuthConfiguration struct {
     Keys          bool
