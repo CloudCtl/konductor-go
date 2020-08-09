@@ -48,6 +48,12 @@ var (
     configFile = ("sparta.yaml")
     configyaml Configuration
 )
+var (
+    runvars := "\n" +
+    "  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
+    "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
+    "  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
+)
 
 func CoreRun() {
     CoreParse()
@@ -56,9 +62,6 @@ func CoreRun() {
 
 func CoreInfo() {
     fmt.Println( "INFO:" + "\n" +
-    "  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
-    "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
-    "  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
     fmt.Println(configyaml.Subnets.Private)
 }
 
