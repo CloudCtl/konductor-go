@@ -104,7 +104,7 @@ type CloudConfiguration struct {
 }
 
 type SubnetsConfiguration struct {
-    Private map[]interface{} `mapstructure:"private"` 
+    Private map[string]int `mapstructure:"private"` 
 /*
     Private       string `mapstructure:"private"`
     Public        string `mapstructure:"public"`
