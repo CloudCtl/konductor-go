@@ -51,18 +51,11 @@ var (
 )
 
 func CoreRun() {
-
-    viper.SetDefault("configyaml.Cluster.Target", "govcloud")
-    viper.SetDefault(configyaml.Cloud.CidrPrivate, "172.22.0.0/24")
-
     CoreParse()
     CoreInfo()
 }
 
 func CoreInfo() {
-
-    viper.SetDefault("configyaml.Cluster.Target", "govcloud")
-    viper.SetDefault(configyaml.Cloud.CidrPrivate, "172.22.0.0/24")
 
     runvars := "\n" +
       "  Openshift Version:  " + configyaml.Openshift.Version  + "\n" +
@@ -90,8 +83,6 @@ func CoreParse() {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
 
-    viper.SetDefault("configyaml.Cluster.Target", "govcloud")
-    viper.SetDefault(configyaml.Cloud.CidrPrivate, "172.22.0.0/24")
     return
 }
 
