@@ -72,7 +72,7 @@ func CoreParse() {
     viper.SetConfigName("sparta.yaml")
     viper.AddConfigPath("${HOME}/sparta.yaml")
     viper.AddConfigPath(".")
-    ViperDefaults()
+    viper.SetDefault("configyaml.Cloud.CidrPrivate", "192.168.22.0/24")
 
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file, %s", err)
@@ -83,10 +83,6 @@ func CoreParse() {
     }
     return
 }
-
-func ViperDefaults (
-	viper.SetDefault("configyaml.Cloud.CidrPrivate", "192.168.22.0/24")
-)
 
 type Configuration struct {
     Auth          AuthConfiguration `mapstructure:"provider-auth"`
