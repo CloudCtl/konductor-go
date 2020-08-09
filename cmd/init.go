@@ -21,7 +21,7 @@ import (
     "log"
     "github.com/spf13/cobra"
     "github.com/spf13/viper"
-    kcorelog "github.com/CodeSparta/koffer-go/plugins/log"
+    kcorelog "github.com/CodeSparta/konductor-go/plugins/log"
 )
 
 var initCmd = &cobra.Command{
