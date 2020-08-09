@@ -72,11 +72,11 @@ func CoreInit() {
 }
 
 type Configuration struct {
-    Ocp     OcpConfiguration
+    Ocp     OpenshiftConfiguration
     Cluster ClusterConfiguration
     Cloud   CloudConfiguration
     Auth    AuthConfiguration `mapstructure:"provider-auth"`
-    Rdsrd   RdsrdConfiguration
+    Rdsrd   RedSordConfiguration
 }
 
 type OpenshiftConfiguration struct {
