@@ -55,7 +55,6 @@ func CoreRun() {
 }
 
 func CoreInfo() {
-    var subnetids  = (configyaml.Subnets.Private)
     var runvars   string = "\n" +
       "  Openshift Version: " + configyaml.Openshift.Version  + "\n" +
       "  AWS Secret:        " + configyaml.Auth.Secret        + "\n" +
