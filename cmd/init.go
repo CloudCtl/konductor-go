@@ -55,10 +55,12 @@ func CoreRun() {
 }
 
 func CoreInfo() {
-    runvars := "\n" +
-      "  Openshift Version: " + configyaml.Openshift.Version  + "\n" +
-      "  AWS Secret:        " + configyaml.Auth.Secret        + "\n" +
-      "  AWS Secret:        " + configyaml.Cloud.CidrPrivate  + "\n" )
+
+    var runvars string := "\n" +
+       "  Openshift Version: " + configyaml.Openshift.Version  + "\n" +
+       "  AWS Secret:        " + configyaml.Auth.Secret        + "\n" +
+       "  AWS Secret:        " + configyaml.Cloud.CidrPrivate  + "\n"
+
     fmt.Println(runvars)
     fmt.Println(configyaml.Subnets.Private)
 }
