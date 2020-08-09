@@ -21,7 +21,6 @@ import (
     "log"
     "github.com/spf13/cobra"
     "github.com/spf13/viper"
-    kcorelog "github.com/CodeSparta/konductor-go/plugins/log"
 )
 
 var initCmd = &cobra.Command{
@@ -63,7 +62,7 @@ func CoreInfo() {
       "  AWS Subnet CIDR:   " + configyaml.Cloud.CidrPrivate  + "\n" +
       "  AWS Subnet IDs:    "
 
-    kcorelog.Info(runvars)
+    fmt.Println(runvars)
     fmt.Println(configyaml.Subnets.Private)
 }
 
