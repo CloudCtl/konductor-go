@@ -72,6 +72,7 @@ func CoreParse() {
     viper.SetConfigName("sparta.yaml")
     viper.AddConfigPath("${HOME}/sparta.yaml")
     viper.AddConfigPath(".")
+
     viper.SetDefault("configyaml.Cloud.CidrPrivate", "192.168.22.0/24")
 
     if err := viper.ReadInConfig(); err != nil {
