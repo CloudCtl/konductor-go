@@ -55,7 +55,7 @@ func CoreRun() {
 }
 
 func CoreInfo() {
-    var subnetids string = (configyaml.Subnets.Private)
+    var subnetids  = (configyaml.Subnets.Private)
     var runvars   string = "\n" +
       "  Openshift Version: " + configyaml.Openshift.Version  + "\n" +
       "  AWS Secret:        " + configyaml.Auth.Secret        + "\n" +
@@ -115,8 +115,8 @@ type CloudConfiguration struct {
 // TODO: convert interface to map[string] slice
 //   google: golang viper yaml type struct map to slice
 type SubnetsConfiguration struct {
-    Private interface{} `mapstructure:"private"`
-    Public  interface{} `mapstructure:"public"`
+    Private []interface{} `mapstructure:"private"`
+    Public  []interface{} `mapstructure:"public"`
 }
 
 type AuthConfiguration struct {
