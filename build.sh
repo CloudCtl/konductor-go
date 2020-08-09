@@ -13,10 +13,10 @@ mkdir -p /tmp/bin
 
 plugins="
     "github.com/CodeSparta/konductor-go/cmd" \
-    "github.com/CodeSparta/konductor-go/plugins/err" \
-    "github.com/CodeSparta/konductor-go/plugins/log" \
-    "github.com/CodeSparta/konductor-go/plugins/auth" \
 "
+#   "github.com/CodeSparta/konductor-go/plugins/err" \
+#   "github.com/CodeSparta/konductor-go/plugins/log" \
+#   "github.com/CodeSparta/konductor-go/plugins/auth" \
 #   "github.com/mitchellh/mapstructure" \
 #   "golang.org/x/sys/unix" \
 #   "github.com/spf13/cobra" \
