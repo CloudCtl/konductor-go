@@ -69,8 +69,9 @@ func CoreInit() {
     fmt.Println( "INFO:" + "\n" +
 "  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
 "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
-"  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" +
-"  VPC Private Subnets: " + configyaml.Subnets.Private        + "\n" )
+"  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
+
+    fmt.Printf("  VPC Private Subnets: %#+v\n" + configyaml.Subnets.Private + "\n" )
 }
 
 type Configuration struct {
