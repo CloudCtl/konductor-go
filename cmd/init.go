@@ -21,7 +21,7 @@ import (
     "log"
     "github.com/spf13/cobra"
     "github.com/spf13/viper"
-//  "github.com/spf13/pflag"
+    "github.com/spf13/pflag"
 )
 
 var initCmd = &cobra.Command{
@@ -40,7 +40,6 @@ Konductor Init:
 
 func init() {
 	rootCmd.AddCommand(initCmd)
-	initCmd.Flags().StringP(&target, "target", "t", "govcloud", "Set Target Environment")
 }
 
 var (
@@ -75,6 +74,9 @@ func CoreParse() {
     viper.SetConfigName("sparta.yaml")
     viper.AddConfigPath("${HOME}/sparta.yaml")
     viper.AddConfigPath(".")
+
+    initCmd.Flags().StringP(&target, "target", "t", "govcloud", "Set Target Environment")
+    viper.BindPflag("target", initCmd.Flags().Lookup("target"))
 
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file, %s", err)
