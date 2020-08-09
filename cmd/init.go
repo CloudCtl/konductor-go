@@ -71,8 +71,7 @@ func CoreInit() {
 "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
 "  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
 
-    var sbnts = ("  VPC Private Subnets: " + configyaml.Subnets.Private)
-    fmt.Printf(sbnts ...interface{})
+    fmt.Println("  VPC Private Subnets: " + configyaml.Subnets.Private)
 }
 
 type Configuration struct {
@@ -105,7 +104,7 @@ type CloudConfiguration struct {
 }
 
 type SubnetsConfiguration struct {
-    Private       string `mapstructure:"private"`
+    Private       interface{} `mapstructure:"private"`
 /*
     Public        map[string]
     Private       map[string]
