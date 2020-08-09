@@ -70,14 +70,14 @@ func CoreInit() {
 "  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
 "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
 "  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" +
-"  VPC Private Subnets: " + configyaml.Subnets.Private        + "\n" )
+"  VPC Private Subnets: " + configyaml.Subnets        + "\n" )
 }
 
 type Configuration struct {
     Auth          AuthConfiguration `mapstructure:"provider-auth"`
     Cloud         CloudConfiguration
     Redsord       RedSordConfiguration
-    Subnets       SubnetsConfiguration
+    Subnets       SubnetsConfiguration map[string][]string
     Cluster       ClusterConfiguration
     Openshift     OpenshiftConfiguration
 }
@@ -102,9 +102,11 @@ type CloudConfiguration struct {
     CidrPrivate   string `mapstructure:"cidr-private"`
 }
 
+/*
 type SubnetsConfiguration struct {
-    Private       map[string][]string
+    Private       
 }
+*/
 
 type AuthConfiguration struct {
     Keys          bool
