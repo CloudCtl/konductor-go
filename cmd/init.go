@@ -41,7 +41,7 @@ Konductor Init:
 `,
     Run: func(cmd *cobra.Command, args []string) {
         fmt.Println("Starting Konductor Init....")
-        CoreInit()
+        CoreParse()
     },
 }
 
@@ -49,13 +49,12 @@ func init() {
 	rootCmd.AddCommand(initCmd)
 }
 
-func CoreInit() {
+func CoreParse() {
     viper.Set("Verbose", true)
     viper.SetConfigType("yaml")
     viper.SetConfigName("sparta.yaml")
-
-    viper.AddConfigPath(".")
     viper.AddConfigPath("${HOME}/sparta.yaml")
+    viper.AddConfigPath(".")
 
 
     if err := viper.ReadInConfig(); err != nil {
