@@ -39,7 +39,8 @@ Konductor Init:
 }
 
 func init() {
-	rootCmd.AddCommand(initCmd)
+    rootCmd.AddCommand(initCmd)
+    initCmd.Flags().StringP(target, "target", "t", "Set Target Environment")
 }
 
 var (
@@ -75,7 +76,6 @@ func CoreParse() {
     viper.AddConfigPath("${HOME}/sparta.yaml")
     viper.AddConfigPath(".")
 
-    initCmd.Flags().StringP(target, "target", "t", "Set Target Environment")
     viper.BindPflag("configyaml.Cluster.Target", initCmd.Flags().Lookup("target"))
     flag.Parse()
 
