@@ -75,8 +75,9 @@ func CoreParse() {
     viper.AddConfigPath("${HOME}/sparta.yaml")
     viper.AddConfigPath(".")
 
-    initCmd.Flags().StringP(&target, "target", "t", "Set Target Environment")
+    initCmd.Flags().StringP(target, "target", "t", "Set Target Environment")
     viper.BindPflag("configyaml.Cluster.Target", initCmd.Flags().Lookup("target"))
+    parse.Flags()
 
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file, %s", err)
