@@ -40,6 +40,7 @@ Konductor Init:
 
 func init() {
 	rootCmd.AddCommand(initCmd)
+	initCmd.Flags().StringP(&target, "target", "t", "govcloud", "Set Target Environment")
 }
 
 var (
