@@ -118,6 +118,8 @@ type CloudConfiguration struct {
 //   google: golang viper yaml type struct map to slice
 type SubnetsConfiguration struct {
     Private map[string]string `mapstructure:"private"`
+    Private map[string]string `mapstructure:"private"`
+    Public  map[string]string `mapstructure:"public"`
 //  Public  interface{} `mapstructure:"public"`
 }
 
