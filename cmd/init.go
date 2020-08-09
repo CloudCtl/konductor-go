@@ -45,6 +45,10 @@ Konductor Init:
     },
 }
 
+func init() {
+	rootCmd.AddCommand(initCmd)
+}
+
 func CoreInit() {
     viper.Set("Verbose", true)
     viper.SetConfigType("yaml")
@@ -62,38 +66,47 @@ func CoreInit() {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
 
-    fmt.Printf("Task Command:   %s \n", configyaml.Task.Cmd)
-    fmt.Printf("Task Sub Cmd:   %s \n", configyaml.Task.Sub)
-    fmt.Printf("AWS Region:     %s \n", configyaml.Cloud.Region)
-    fmt.Printf("AWS VPC ID:     %s \n", configyaml.Cloud.VpcId)
-    fmt.Printf("AWS Key ID:     %s \n", configyaml.Auth.Key)
-    fmt.Printf("AWS Secret:     %s \n", configyaml.Auth.Secret)
-}
-
-func init() {
-	rootCmd.AddCommand(initCmd)
-	// initCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+    fmt.Printf( "INFO:" +
+"  Openshift Version:  %s" + configyaml.Ocp.OcpVersion +
+"  AWS Secret:         %s" + configyaml.Auth.Secret + "\n"
+)
 }
 
 type Configuration struct {
-    Cloud CloudConfiguration
-    Task TaskConfiguration
-    Auth AuthConfiguration `mapstructure:"provider-auth"`
+    Ocp     OcpConfiguration
+    Cluster ClusterConfiguration
+    Cloud   CloudConfiguration
+    Auth    AuthConfiguration `mapstructure:"provider-auth"`
+    Rdsrd   RdsrdConfiguration
 }
 
-type AuthConfiguration struct {
-        Keys bool
-        Key string
-        Secret string
+type OpenshiftConfiguration struct {
+    OcpVersion string
 }
 
-type TaskConfiguration struct {
-	Cmd string
-	Sub string
+type ClusterConfiguration struct {
+    Target string
+    VpcName string `mapstructure:"vpc-name"`
+    ClusterName string `mapstructure:"cluster-name"`
+    BaseDomain string `mapstructure:"base-domain"`
+    ClusterDomain string `mapstructure:"cluster-domain"`
+    AmiId string `mapstructure:"ami-id"`
 }
 
 type CloudConfiguration struct {
-	Region string
-	VpcId string `mapstructure:"vpc-id"`
+    Provider string
+    Region string
+    VpcId string `mapstructure:"vpc-id"`
+    CidrPrivate string `mapstructure:"cidr-private"`
+    SubnePrivatetIds []string `mapstructure:"subnet-ids"`
 }
 
+type AuthConfiguration struct {
+    Keys bool
+    Key string
+    Secret string
+}
+
+type RedSordConfiguration struct {
+    Redsord bool
+}
