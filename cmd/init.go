@@ -44,7 +44,6 @@ func init() {
 }
 
 var (
-    name       string
     target     string
     home       string = os.Getenv("HOME")
     configFile string = ("sparta.yaml")
