@@ -32,7 +32,7 @@ Konductor Init:
   enables stowing the generated materials in encrypted S3 storage.
 `,
     Run: func(cmd *cobra.Command, args []string) {
-        fmt.Println("Starting Konductor Init.... \n")
+        fmt.Println("Starting Konductor Init....")
         CoreRun()
     },
 }
@@ -44,8 +44,8 @@ func init() {
 var (
     name       string
     subcmd     string
-    home       = os.Getenv("HOME")
-    configFile = ("sparta.yaml")
+    home       string = os.Getenv("HOME")
+    configFile string = ("sparta.yaml")
     configyaml Configuration
 )
 
