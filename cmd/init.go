@@ -114,10 +114,10 @@ type CloudConfiguration struct {
     CidrPrivate   string `mapstructure:"cidr-private"`
 }
 
-// TODO: convert interface to map[string] slice
-//   google: golang viper yaml type struct map to slice
 type SubnetsConfiguration struct {
     Private interface{} `mapstructure:"private"`
+// TODO: convert interface to map[string] slice
+//   google: golang viper yaml type struct map to slice
 //  Private map[string]string `mapstructure:"private"`
 //  Public  map[string]string `mapstructure:"public"`
 }
