@@ -72,7 +72,7 @@ func CoreInit() {
 "  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
 
     fmt.Println( "INFO:" + "\n" +
-"  VPC Private Subnets: " + configyaml.Subnets.SubnetPrivateIds + "\n" )
+"  VPC Private Subnets: " + configyaml.Subnets.Private + "\n" )
 }
 
 type Configuration struct {
