@@ -74,7 +74,7 @@ func CoreParse() {
     viper.AddConfigPath(".")
 
 //  if viper.Sub("configyaml.Cloud.CidrPrivate") == nil {
-        viper.SetDefault("CidrPrivate", "172.22.0.0/24")
+        viper.SetDefault("configyaml.Cloud.CidrPrivate", "172.22.0.0/24")
 //  }
 
     if err := viper.ReadInConfig(); err != nil {
