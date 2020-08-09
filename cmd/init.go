@@ -66,9 +66,9 @@ func CoreInit() {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
 
-    fmt.Printf( "INFO:" +
-"  Openshift Version:  %s" + configyaml.Ocp.OcpVersion +
-"  AWS Secret:         %s" + configyaml.Auth.Secret + "\n")
+    fmt.Println( "INFO:" + "\n" +
+"  Openshift Version:  " + configyaml.Ocp.OcpVersion + "\n" +
+"  AWS Secret:         " + configyaml.Auth.Secret + "\n")
 }
 
 type Configuration struct {
