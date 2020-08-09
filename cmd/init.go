@@ -44,10 +44,10 @@ func init() {
 }
 
 var (
-    target     string
     home       string = os.Getenv("HOME")
     configFile string = ("sparta.yaml")
     configyaml Configuration
+    target     string
 )
 
 func CoreRun() {
