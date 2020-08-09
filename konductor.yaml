@@ -2,17 +2,17 @@ openshift:
   version: 4.5.4
 
 cluster:
-  target: "govcloud"
-  vpc-name: "iamgroot"
-  cluster-name: "i"
-  base-domain: "am.groot"
-  cluster-domain: "i.am.groot"
-  ami-id: "ami-e06e5081"
+  target: govcloud
+  vpc-name: iamgroot
+  cluster-name: i
+  base-domain: am.groot
+  cluster-domain: i.am.groot
+  ami-id: ami-e06e5081
 
 cloud:
-  provider: "aws"
-  region: "us-gov-west-1"
-  vpc-id: "vpc-0aef6256b40f30778"
+  provider: aws
+  region: us-gov-west-1
+  vpc-id: vpc-0aef6256b40f30778
   cidr-private: 10.0.0.0/24
 
 subnets:
@@ -23,8 +23,8 @@ subnets:
 
 provider-auth:
   keys: true
-  secret: "AKIA3L76BYEU5WQYKNWD"
-  key: "jlInQW7HYrTgtkzQBs2X5FnL35yPVz1qnd/fvHj5"
+  secret: AKIA3L76BYEU5WQYKNWD
+  key: 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
 
 redsord:
   enabled: false
