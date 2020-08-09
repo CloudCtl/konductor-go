@@ -72,7 +72,7 @@ func CoreParse() {
     viper.SetConfigName("sparta.yaml")
     viper.AddConfigPath("${HOME}/sparta.yaml")
     viper.AddConfigPath(".")
-
+    ViperDefaults()
 
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file, %s", err)
