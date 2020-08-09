@@ -48,7 +48,7 @@ var (
     home       string = os.Getenv("HOME")
     configFile string = ("sparta.yaml")
     configyaml Configuration
-    target     string
+    target     string = viper.GetString(configyaml.Cluster.Target string)
 )
 
 func CoreRun() {
