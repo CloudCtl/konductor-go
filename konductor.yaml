@@ -16,7 +16,12 @@ cloud:
   cidr-private: "10.0.0.0/24"
 
 subnets:
-  private: '"subnet-02bf7c8c69067b993", "subnet-0d75d5033bfc98414", "subnet-058e00cfdb41ca5ce"'
+  private:
+    - "subnet-02bf7c8c69067b993"
+    - "subnet-0d75d5033bfc98414"
+    - "subnet-058e00cfdb41ca5ce"
+
+# private: '"subnet-02bf7c8c69067b993", "subnet-0d75d5033bfc98414", "subnet-058e00cfdb41ca5ce"'
 
 provider-auth:
   keys: true
