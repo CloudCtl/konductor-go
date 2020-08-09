@@ -76,7 +76,7 @@ func CoreParse() {
     viper.AddConfigPath("${HOME}/sparta.yaml")
     viper.AddConfigPath(".")
 
-    viper.GetString(configyaml.Cluster.Target string)
+    target := viper.GetString(configyaml.Cluster.Target string)
     viper.BindPflag("configyaml.Cluster.Target", initCmd.Flags().Lookup("target"))
     flag.Parse()
 
