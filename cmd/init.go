@@ -57,6 +57,9 @@ func CoreRun() {
 
 func CoreInfo() {
 
+    viper.SetDefault("configyaml.Cluster.Target", "govcloud")
+    viper.SetDefault(configyaml.Cloud.CidrPrivate, "172.22.0.0/24")
+
     runvars := "\n" +
       "  Openshift Version:  " + configyaml.Openshift.Version  + "\n" +
       "  Target Environment: " + configyaml.Cluster.Target     + "\n" +
