@@ -61,7 +61,7 @@ func CoreInit() {
     if err := viper.ReadInConfig(); err != nil {
         log.Fatalf("Error reading config file, %s", err)
     }
-    err := viper.Unmarshal(&configyaml)
+    err := viper.Unmarshal(&configyaml interface{})
     if err != nil {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
