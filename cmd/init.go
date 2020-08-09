@@ -49,6 +49,15 @@ func init() {
 	rootCmd.AddCommand(initCmd)
 }
 
+func Core() {
+    fmt.Println( "INFO:" + "\n" +
+"  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
+"  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
+"  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
+
+    fmt.Println(configyaml.Subnets.Private)
+}
+
 func CoreParse() {
     viper.Set("Verbose", true)
     viper.SetConfigType("yaml")
@@ -64,14 +73,6 @@ func CoreParse() {
     if err != nil {
         log.Fatalf("Unable to decode into struct, %v", err)
     }
-
-    fmt.Println( "INFO:" + "\n" +
-"  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
-"  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
-"  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
-
-    fmt.Println(configyaml.Subnets.Private)
-}
 
 type Configuration struct {
     Auth          AuthConfiguration `mapstructure:"provider-auth"`
