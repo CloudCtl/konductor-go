@@ -71,7 +71,7 @@ func CoreInit() {
 "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
 "  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
 
-    var privlist := string(configyaml.Subnets.Private)
+    var privlist := []string(configyaml.Subnets.Private)
     fmt.Println
 }
 
