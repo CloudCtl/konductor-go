@@ -27,7 +27,7 @@ var (
     name string
     subcmd string
     home        = os.Getenv("HOME")
-    configFile = ("konductor.yaml")
+    configFile = ("sparta.yaml")
     configyaml Configuration
 )
 
@@ -52,10 +52,10 @@ func init() {
 func CoreInit() {
     viper.Set("Verbose", true)
     viper.SetConfigType("yaml")
-    viper.SetConfigName("konductor.yaml")
+    viper.SetConfigName("sparta.yaml")
 
     viper.AddConfigPath(".")
-    viper.AddConfigPath("${HOME}/konductor.yaml")
+    viper.AddConfigPath("${HOME}/sparta.yaml")
 
 
     if err := viper.ReadInConfig(); err != nil {
@@ -71,8 +71,7 @@ func CoreInit() {
 "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
 "  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
 
-    var privlist := []string(configyaml.Subnets.Private)
-    fmt.Println
+    fmt.Println(configyaml.Subnets.Private)
 }
 
 type Configuration struct {
@@ -104,9 +103,11 @@ type CloudConfiguration struct {
     CidrPrivate   string `mapstructure:"cidr-private"`
 }
 
+// TODO: convert interface to map[string] slice
+//   google: golang viper yaml type struct map to slice
 type SubnetsConfiguration struct {
-    Private interface{} `mapstructure:"private"` 
-    Public  interface{} `mapstructure:"public"` 
+    Private interface{} `mapstructure:"private"`
+    Public  interface{} `mapstructure:"public"`
 }
 
 type AuthConfiguration struct {
