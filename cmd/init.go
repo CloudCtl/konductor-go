@@ -31,6 +31,10 @@ var (
     configyaml Configuration
 )
 
+func init() {
+	rootCmd.AddCommand(initCmd)
+}
+
 var initCmd = &cobra.Command{
 	Use:   "init",
 	Short: "Konductor init command to prepare and validate deploy config",
@@ -43,10 +47,6 @@ Konductor Init:
         fmt.Println("Starting Konductor Init....")
         CoreRun()
     },
-}
-
-func init() {
-	rootCmd.AddCommand(initCmd)
 }
 
 func CoreRun() {
