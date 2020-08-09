@@ -23,8 +23,8 @@ subnets:
 
 provider-auth:
   keys: true
-  secret: AKIA3L76BYEU5WQYKNWD
-  key: jlInQW7HYrTgtkzQBs2X5FnL35yPVz1qnd/fvHj5
+  secret: XXXXXXXXXXXXXXXXXXXX
+  key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 redsord:
   enabled: false
