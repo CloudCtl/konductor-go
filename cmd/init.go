@@ -39,17 +39,17 @@ Konductor Init:
     },
 }
 
-func init() {
-    rootCmd.AddCommand(initCmd)
-    initCmd.Flags().StringP(target, "target", "t", "Set Target Environment")
-}
-
 var (
     home       string = os.Getenv("HOME")
     configFile string = ("sparta.yaml")
     configyaml Configuration
     target     string
 )
+
+func init() {
+    rootCmd.AddCommand(initCmd)
+    initCmd.Flags().StringP(&target, "target", "t", "Set Target Environment")
+}
 
 func CoreRun() {
     CoreParse()
