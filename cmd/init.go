@@ -26,10 +26,14 @@ import (
 var (
     name string
     subcmd string
-    home        = os.Getenv("HOME")
+    home       = os.Getenv("HOME")
     configFile = ("sparta.yaml")
     configyaml Configuration
 )
+
+func init() {
+	rootCmd.AddCommand(initCmd)
+}
 
 var initCmd = &cobra.Command{
 	Use:   "init",
@@ -41,20 +45,15 @@ Konductor Init:
 `,
     Run: func(cmd *cobra.Command, args []string) {
         fmt.Println("Starting Konductor Init....")
-        CoreParse()
+        CoreRun()
     },
 }
 
-func init() {
-	rootCmd.AddCommand(initCmd)
-}
-
-func Core() {
+func CoreRun() {
     fmt.Println( "INFO:" + "\n" +
-"  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
-"  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
-"  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
-
+    "  Openshift Version:   " + configyaml.Openshift.Version      + "\n" +
+    "  AWS Secret:          " + configyaml.Auth.Secret            + "\n" +
+    "  AWS Secret:          " + configyaml.Cloud.CidrPrivate      + "\n" )
     fmt.Println(configyaml.Subnets.Private)
 }
 
