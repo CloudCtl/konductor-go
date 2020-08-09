@@ -2,7 +2,7 @@ openshift:
   version: 4.5.4
 
 cluster:
-  target: govcloud
+  target: fences
   vpc-name: iamgroot
   cluster-name: i
   base-domain: am.groot
