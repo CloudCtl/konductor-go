@@ -67,20 +67,20 @@ func CoreInit() {
     }
 
     fmt.Println( "INFO:" + "\n" +
-"  Openshift Version:  " + configyaml.Ocp.OcpVersion + "\n" +
-"  AWS Secret:         " + configyaml.Auth.Secret + "\n")
+"  Openshift Version:  " + configyaml.Openshift.Version + "\n" +
+"  AWS Secret:         " + configyaml.Auth.Secret       + "\n" )
 }
 
 type Configuration struct {
-    Ocp     OpenshiftConfiguration
-    Cluster ClusterConfiguration
-    Cloud   CloudConfiguration
-    Auth    AuthConfiguration `mapstructure:"provider-auth"`
-    Rdsrd   RedSordConfiguration
+    Openshift OpenshiftConfiguration
+    Cluster   ClusterConfiguration
+    Cloud     CloudConfiguration
+    Auth      AuthConfiguration `mapstructure:"provider-auth"`
+    Rdsrd     RedSordConfiguration
 }
 
 type OpenshiftConfiguration struct {
-    OcpVersion string
+    Version string
 }
 
 type ClusterConfiguration struct {
