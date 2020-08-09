@@ -80,8 +80,8 @@ type Configuration struct {
     Cluster   ClusterConfiguration
     Cloud     CloudConfiguration
     Auth      AuthConfiguration `mapstructure:"provider-auth"`
-    Rdsrd     RedSordConfiguration
-    Subnets   ListConfiguration
+    Redsord   RedSordConfiguration
+    Subnets   SubnetsConfiguration
 }
 
 type OpenshiftConfiguration struct {
@@ -104,8 +104,8 @@ type CloudConfiguration struct {
     CidrPrivate string `mapstructure:"cidr-private"`
 }
 
-type ListConfiguration struct {
-    SubnetPrivateIds []byte `mapstructure:"subnets"`
+type SubnetsConfiguration struct {
+    Private []string `mapstructure:"private"`
 }
 
 type AuthConfiguration struct {
