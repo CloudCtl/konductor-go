@@ -48,7 +48,7 @@ var (
 
 func init() {
     rootCmd.AddCommand(initCmd)
-    initCmd.Flags().StringP(&target, "target", "t", "govcloud", "Set Target Environment")
+    initCmd.Flags().StringVarP(&target, "target", "t", "govcloud", "Set Target Environment")
 }
 
 func CoreRun() {
