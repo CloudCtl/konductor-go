@@ -63,7 +63,7 @@ func CoreInfo() {
       "  AWS Subnet IDs:    "
 
     fmt.Println(runvars)
-    fmt.Println(configyaml.Subnets.Private)
+    fmt.Printf(configyaml.Subnets.Private)
 }
 
 func CoreParse() {
