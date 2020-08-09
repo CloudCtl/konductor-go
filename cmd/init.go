@@ -99,7 +99,7 @@ type CloudConfiguration struct {
     Region string
     VpcId string `mapstructure:"vpc-id"`
     CidrPrivate string `mapstructure:"cidr-private"`
-    SubnetPrivateIds string `mapstructure:"subnet-ids"`
+    SubnetPrivateIds []string `mapstructure:"subnet-ids"`
 }
 
 type AuthConfiguration struct {
