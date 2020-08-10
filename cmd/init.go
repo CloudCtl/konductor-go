@@ -48,7 +48,6 @@ var (
 
 func init() {
     rootCmd.AddCommand(initCmd)
-    initCmd.Flags().StringVarP(&target, "target", "t", "govcloud", "Set Target Environment")
 }
 
 func CoreRun() {
@@ -68,8 +67,6 @@ func CoreInfo() {
     fmt.Println(runvars)
     fmt.Println(configyaml.Subnets.Private)
 
-    target := viper.GetString(configyaml.Cluster.Target)
-    viper.BindFlagValue(configyaml.Cluster.Target string, flag)
     flag.Parse()
     fmt.Println(target)
 }
