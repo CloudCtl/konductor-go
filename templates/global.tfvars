@@ -1,3 +1,15 @@
+aws_region="us-gov-west-1"
+aws_access_key_id="AKIA3L76BYEU5WQYKNWD"
+aws_secret_access_key="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"
+vpc_id="vpc-0aef6256b40f30778"
+rhcos_ami="ami-e06e5081"
+target_environment="govcloud"
+cluster_name="i"
+name_domain="am.groot"
+vpc_name="iamgroot"
+cluster_domain="i.am.groot"
+private_vpc_cidr="10.0.0.0/24"
+subnet_list=["subnet-02bf7c8c69067b993", "subnet-0d75d5033bfc98414", "subnet-058e00cfdb41ca5ce"]
 
 openshift:
   version: 4.5.4
