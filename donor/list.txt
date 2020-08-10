@@ -1,0 +1,1 @@
+https://github.com/VirtusLab/render/blob/master/renderer/examples_test.go
