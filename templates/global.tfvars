@@ -1,4 +1,4 @@
-aws_region="us-gov-west-1"
+aws_region="{{ .configyaml.Cloud.Region }}"
 aws_access_key_id="AKIA3L76BYEU5WQYKNWD"
 aws_secret_access_key="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"
 vpc_id="vpc-0aef6256b40f30778"
