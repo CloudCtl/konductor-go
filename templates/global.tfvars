@@ -9,7 +9,7 @@ name_domain="{{ .configyaml.Cluster.BaseDomain }}"
 vpc_name="{{ .configyaml.Cluster.VpcName }}"
 cluster_domain="{{ .configyaml.Cluster.BaseDomain }}"
 private_vpc_cidr="{{ .configyaml.Cloud.VpcId }}"
-subnet_list=["subnet-02bf7c8c69067b993", "subnet-0d75d5033bfc98414", "subnet-058e00cfdb41ca5ce"]
+subnet_list="[{{ .configyaml.Subnets.Private }}]"
 
 openshift:
   version: 4.5.4
