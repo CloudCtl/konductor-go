@@ -69,7 +69,7 @@ func CoreInfo() {
     fmt.Println(configyaml.Subnets.Private)
 
     target := viper.GetString(configyaml.Cluster.Target)
-    viper.BindPFlag("target", init.Flags().Lookup("target"))
+    viper.BindFlagValue(configyaml.Cluster.Target string, flag)
     flag.Parse()
     fmt.Println(target)
 }
