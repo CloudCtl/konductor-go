@@ -16,13 +16,13 @@ limitations under the License.
 package cmd
 
 import (
-    "os"
-    "fmt"
-    "log"
-    "flag"
-    "github.com/spf13/cobra"
-    "github.com/spf13/viper"
-//  "github.com/spf13/pflag"
+	"flag"
+	"fmt"
+	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+	"log"
+	"os"
+	//  "github.com/spf13/pflag"
 )
 
 var initCmd = &cobra.Command{
@@ -33,108 +33,107 @@ Konductor Init:
   Init provides sparta configuration file creation guidance and 
   enables stowing the generated materials in encrypted S3 storage.
 `,
-    Run: func(cmd *cobra.Command, args []string) {
-        fmt.Println("Starting Konductor Init....")
-        CoreRun()
-    },
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("Starting Konductor Init....")
+		CoreRun()
+	},
 }
 
 var (
-    home       string = os.Getenv("HOME")
-    configFile string = ("sparta.yaml")
-    configyaml Configuration
-    target     string
+	home       string = os.Getenv("HOME")
+	configFile string = ("sparta.yaml")
+	configyaml Configuration
+	target     string
 )
 
 func init() {
-    rootCmd.AddCommand(initCmd)
+	rootCmd.AddCommand(initCmd)
 }
 
 func CoreRun() {
-    CoreParse()
-    CoreInfo()
+	CoreParse()
+	CoreInfo()
 }
 
 func CoreInfo() {
 
-    runvars := "\n" +
-      "  Openshift Version:  " + configyaml.Openshift.Version  + "\n" +
-      "  Target Environment: " + configyaml.Cluster.Target     + "\n" +
-      "  AWS Secret:         " + configyaml.Auth.Secret        + "\n" +
-      "  AWS Subnet CIDR:    " + configyaml.Cloud.CidrPrivate  + "\n" +
-      "  AWS Subnet IDs:     "
+	runvars := "\n" +
+		"  Openshift Version:  " + configyaml.Openshift.Version + "\n" +
+		"  Target Environment: " + configyaml.Cluster.Target + "\n" +
+		"  AWS Secret:         " + configyaml.Auth.Secret + "\n" +
+		"  AWS Subnet CIDR:    " + configyaml.Cloud.CidrPrivate + "\n" +
+		"  AWS Subnet IDs:     "
 
-    fmt.Println(runvars)
-    fmt.Println(configyaml.Subnets.Private)
+	fmt.Println(runvars)
+	fmt.Println(configyaml.Subnets.Private)
 
-    flag.Parse()
-    fmt.Println(target)
+	flag.Parse()
+	fmt.Println(target)
 }
 
 func CoreParse() {
-    viper.Set("Verbose", true)
-    viper.SetConfigType("yaml")
-    viper.SetConfigName("sparta.yaml")
-    viper.AddConfigPath("${HOME}/sparta.yaml")
-    viper.AddConfigPath(".")
+	viper.Set("Verbose", true)
+	viper.SetConfigType("yaml")
+	viper.SetConfigName("sparta.yaml")
+	viper.AddConfigPath("${HOME}/sparta.yaml")
+	viper.AddConfigPath(".")
 
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("Error reading config file, %s", err)
+	}
+	err := viper.Unmarshal(&configyaml)
+	if err != nil {
+		log.Fatalf("Unable to decode into struct, %v", err)
+	}
 
-    if err := viper.ReadInConfig(); err != nil {
-        log.Fatalf("Error reading config file, %s", err)
-    }
-    err := viper.Unmarshal(&configyaml)
-    if err != nil {
-        log.Fatalf("Unable to decode into struct, %v", err)
-    }
-
-    return
+	return
 }
 
 type Configuration struct {
-    Auth          AuthConfiguration `mapstructure:"provider-auth"`
-    Cloud         CloudConfiguration
-    Redsord       RedSordConfiguration
-    Subnets       SubnetsConfiguration
-    Cluster       ClusterConfiguration
-    Openshift     OpenshiftConfiguration
+	Auth      AuthConfiguration `mapstructure:"provider-auth"`
+	Cloud     CloudConfiguration
+	Redsord   RedSordConfiguration
+	Subnets   SubnetsConfiguration
+	Cluster   ClusterConfiguration
+	Openshift OpenshiftConfiguration
 }
 
 type OpenshiftConfiguration struct {
-    Version       string
+	Version string
 }
 
 type ClusterConfiguration struct {
-    Target        string
-    VpcName       string `mapstructure:"vpc-name"`
-    ClusterName   string `mapstructure:"cluster-name"`
-    BaseDomain    string `mapstructure:"base-domain"`
-    ClusterDomain string `mapstructure:"cluster-domain"`
-    AmiId         string `mapstructure:"ami-id"`
+	Target        string
+	VpcName       string `mapstructure:"vpc-name"`
+	ClusterName   string `mapstructure:"cluster-name"`
+	BaseDomain    string `mapstructure:"base-domain"`
+	ClusterDomain string `mapstructure:"cluster-domain"`
+	AmiId         string `mapstructure:"ami-id"`
 }
 
 type CloudConfiguration struct {
-    Provider      string
-    Region        string
-    VpcId         string `mapstructure:"vpc-id"`
-    CidrPrivate   string `mapstructure:"cidr-private"`
+	Provider    string
+	Region      string
+	VpcId       string `mapstructure:"vpc-id"`
+	CidrPrivate string `mapstructure:"cidr-private"`
 }
 
 type SubnetsConfiguration struct {
-    Private interface{} `mapstructure:"private"`
+	Private interface{} `mapstructure:"private"`
 
-// TODO: convert interface to map[string] slice
-//   google: golang viper yaml type struct map to slice
+	// TODO: convert interface to map[string] slice
+	//   google: golang viper yaml type struct map to slice
 
-//  Private map[string]string `mapstructure:"private"`
-//  Public  map[string]string `mapstructure:"public"`
+	//  Private map[string]string `mapstructure:"private"`
+	//  Public  map[string]string `mapstructure:"public"`
 }
 
 type AuthConfiguration struct {
-    Keys          bool
-    Key           string
-    Secret        string
+	Keys   bool
+	Key    string
+	Secret string
 }
 
 type RedSordConfiguration struct {
-    Redsord       bool
+	Redsord bool
 }
