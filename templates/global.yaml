@@ -1,10 +1,10 @@
 ---
-version_openshift: "${varVerOpenshift}"
-target_environment: "${k9TargetEnvironment}"
-name_cluster_vpc: "${k9NameVpc}"
-cluster_domain: "${k9ClusterDomain}"
-cluster_name: "${k9NameCluster}"
-name_domain: "${k9NameDomain}"
+version_openshift: {{ .configyaml.Openshift.Version }}
+target_environment: {{ .configyaml.Cluster.Target }}
+name_cluster_vpc: {{ .configyaml.Cluster.VpcName }}
+cluster_domain: {{ .configyaml.Cluster.ClusterDomain }}
+cluster_name: {{ .configyaml.Cluster.ClusterName }}
+name_domain: {{ .configyaml.Cluster.BaseDomain }}
 
 openshift:
   version: 4.5.4
