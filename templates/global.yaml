@@ -1,3 +1,11 @@
+---
+version_openshift: "${varVerOpenshift}"
+target_environment: "${k9TargetEnvironment}"
+name_cluster_vpc: "${k9NameVpc}"
+cluster_domain: "${k9ClusterDomain}"
+cluster_name: "${k9NameCluster}"
+name_domain: "${k9NameDomain}"
+
 openshift:
   version: 4.5.4
 
@@ -28,3 +36,5 @@ provider-auth:
 
 redsord:
   enabled: false
+
+
