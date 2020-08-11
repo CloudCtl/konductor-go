@@ -1,0 +1,56 @@
+name: Builder & konductor Image Pipeline
+on:
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches: 
+      - master
+  schedule:
+    - cron: '0 12 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Variable | Export Build Date
+      run: |
+        export varrundate="$(date +%y%m%d%I%M%S)"
+        echo "::set-env name=varrundate::$varrundate"
+    - name: Variable | Git Commit Hash
+      run: |
+        export githash="$(git log -1 --pretty=%h)"
+        echo "::set-env name=githash::$githash"
+    - name: Quay.io Login
+      run: |
+        echo "${{ secrets.DOCKERHUB_PASSWD }}" | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin quay.io 
+    - name: Write gitconfig
+      run: |
+        cat <<EOF > gitconfig
+        [user]
+                name = ${{ secrets.ROBOT_USER }}
+                email = ${{ secrets.ROBOT_USER }}@braincraft.io
+        [url "https://${{ secrets.ROBOT_USER }}:${{ secrets.ROBOT_TOKEN }}@github.com"]
+                insteadOf = https://github.com
+        EOF
+    - name: Build Entrypoint
+      run: |
+        docker run --rm \
+            --volume $(pwd)/gitconfig:/root/.gitconfig:z \
+            --volume $(pwd):/root/dev:z \
+            --volume $(pwd)/bin:/tmp/bin:z \
+            --entrypoint /root/dev/build.sh \
+          docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/red-gotools
+    - name: Stash Entrypoint into cradle | konductor-go
+      run: |
+        docker build . \
+            --force-rm \
+            --file ./container/Dockerfile \
+            --tag quay.io/${{ secrets.DOCKERHUB_ORGANIZATION  }}/konductor-go \
+            --tag quay.io/${{ secrets.DOCKERHUB_ORGANIZATION  }}/konductor-go:latest \
+            --tag quay.io/${{ secrets.DOCKERHUB_ORGANIZATION  }}/konductor-go:latest-${{ env.varrundate }}-${{ env.githash }}
+    - name: Image Push | konductor-go | quay.io
+      run: |
+        docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION  }}/konductor-go;                                 \
+        docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION  }}/konductor-go:latest;                                 \
+        docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION  }}/konductor-go:latest-${{ env.varrundate }}-${{ env.githash }};
