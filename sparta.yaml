@@ -33,14 +33,17 @@ koffer:
   silent: true
   plugins:
     - collector-infra
+      version: 1.0.0
       service: github.com
       organization: codesparta
       branch: master
     - collector-operators
+      version: 1.0.0
       service: github.com
       organization: codesparta
       branch: master
     - collector-apps
+      version: 1.0.0
       service: github.com
       organization: codesparta
       branch: master
