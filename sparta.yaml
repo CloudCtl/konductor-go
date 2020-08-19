@@ -28,3 +28,19 @@ provider-auth:
 
 redsord:
   enabled: false
+
+koffer:
+  silent: true
+  plugins:
+    - collector-infra
+      service: github.com
+      organization: codesparta
+      branch: master
+    - collector-operators
+      service: github.com
+      organization: codesparta
+      branch: master
+    - collector-apps
+      service: github.com
+      organization: codesparta
+      branch: master
