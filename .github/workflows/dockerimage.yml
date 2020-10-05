@@ -21,9 +21,12 @@ jobs:
       run: |
         export githash="$(git log -1 --pretty=%h)"
         echo "::set-env name=githash::$githash"
-    - name: Quay.io Login
+    - name: Login DockerHub
       run: |
         echo "${{ secrets.DOCKERHUB_PASSWD }}" | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin quay.io 
+    - name: Login Quay.io 
+      run: |
+        echo "${{ secrets.DOCKERHUB_PASSWD }}" | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin docker.io 
     - name: Write gitconfig
       run: |
         cat <<EOF > gitconfig
