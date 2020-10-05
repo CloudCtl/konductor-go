@@ -58,8 +58,10 @@ jobs:
     - name: Image Push | konductor-go | quay.io
       run: |
         docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go;                                 \
-        docker push docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go;                                 \
         docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest;                                 \
+        docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest-${{ env.varrundate }}-${{ env.githash }};
+    - name: Image Push | konductor-go | docker.io
+      run: |
+        docker push docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go;                                 \
         docker push docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest;                                 \
-        docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest-${{ env.varrundate }}-${{ env.githash }}; \
         docker push docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest-${{ env.varrundate }}-${{ env.githash }};
