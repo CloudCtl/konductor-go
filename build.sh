@@ -12,7 +12,7 @@ rm -rf /root/konductor 2>/dev/null
 mkdir -p /tmp/bin
 
 plugins="
-    'github.com/containercraft/konductor-go/cmd' \
+    github.com/containercraft/konductor-go/cmd \
 "
 #   "github.com/containercraft/konductor-go/plugins/err" \
 #   "github.com/containercraft/konductor-go/plugins/log" \
