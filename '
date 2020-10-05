@@ -11,4 +11,4 @@ sudo /usr/bin/podman run \
 run_dev
 
 mkdir -p /root/deploy/ansible/deploy 
-cp -f site.yml /root/deploy/ansible/deploy/ 
+cp site.yml /root/deploy/ansible/deploy/ 

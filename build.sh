@@ -32,4 +32,5 @@ ${goCmd} build
 
 cp -f ./dev /tmp/bin/konductor 2>/dev/null
 ls -lah /tmp/bin
-
+./tools/test.sh
+./bin/konductor deploy
