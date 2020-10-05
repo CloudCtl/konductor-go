@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/CodeSparta/konductor-go/plugins/log"
+	"github.com/containercraft/konductor-go/plugins/log"
 )
 
 

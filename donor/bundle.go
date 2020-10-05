@@ -28,9 +28,9 @@ import (
     "github.com/spf13/cobra"
     "github.com/go-git/go-git"
     "github.com/go-git/go-git/plumbing"
-    kpullsecret "github.com/CodeSparta/konductor-go/plugins/auth"
-    kcorelog "github.com/CodeSparta/konductor-go/plugins/log"
-    "github.com/CodeSparta/konductor-go/plugins/err"
+    kpullsecret "github.com/containercraft/konductor-go/plugins/auth"
+    kcorelog "github.com/containercraft/konductor-go/plugins/log"
+    "github.com/containercraft/konductor-go/plugins/err"
 //  "github.com/codesparta/konductor/entrypoint/src"
 )
 
@@ -64,7 +64,7 @@ func init() {
 	rootCmd.AddCommand(bundleCmd)
 	bundleCmd.Flags().BoolP("help", "h", false, "konductor bundle help")
 	bundleCmd.Flags().StringVarP(&service, "service", "s", "github.com", "Git Server")
-	bundleCmd.Flags().StringVarP(&user, "user", "u", "CodeSparta", "Repo {User,Organization}/path")
+	bundleCmd.Flags().StringVarP(&user, "user", "u", "containercraft", "Repo {User,Organization}/path")
         bundleCmd.Flags().StringVarP(&branch, "branch", "b", "master", "Git Branch")
         bundleCmd.Flags().StringVarP(&dir, "dir", "d", "/root/konductor", "Clone Path")
         bundleCmd.Flags().StringArrayVarP(&repos, "repo", "r", []string{}, "Plugin Repo Name")
