@@ -1,5 +1,5 @@
 #!/bin/bash
-# cobra init --pkg-name github.com/CodeSparta/konductor-go
+# cobra init --pkg-name github.com/containercraft/konductor-go
 # cobra add mirror
 # cobra add bundle
 # go build
@@ -12,11 +12,11 @@ rm -rf /root/konductor 2>/dev/null
 mkdir -p /tmp/bin
 
 plugins="
-    "github.com/CodeSparta/konductor-go/cmd" \
+    'github.com/containercraft/konductor-go/cmd' \
 "
-#   "github.com/CodeSparta/konductor-go/plugins/err" \
-#   "github.com/CodeSparta/konductor-go/plugins/log" \
-#   "github.com/CodeSparta/konductor-go/plugins/auth" \
+#   "github.com/containercraft/konductor-go/plugins/err" \
+#   "github.com/containercraft/konductor-go/plugins/log" \
+#   "github.com/containercraft/konductor-go/plugins/auth" \
 #   "github.com/mitchellh/mapstructure" \
 #   "golang.org/x/sys/unix" \
 #   "github.com/spf13/cobra" \
