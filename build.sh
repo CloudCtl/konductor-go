@@ -12,9 +12,9 @@ rm -rf /root/konductor 2>/dev/null
 mkdir -p /tmp/bin
 
 ${goCmd} mod download
-${goCmd} build
+${goCmd} build -o bin/konductor
 
-cp -f ./dev /tmp/bin/konductor 2>/dev/null
+cp -f ./bin/konductor /tmp/bin/konductor 2>/dev/null
 ls -lah /tmp/bin
 ./tools/test.sh
 ./bin/konductor deploy
