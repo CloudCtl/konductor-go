@@ -26,8 +26,8 @@ import (
 //  "path/filepath"
 
     "github.com/spf13/cobra"
-    kcorelog "github.com/containercraft/konductor-go/plugins/log"
-//  kpullsecret "github.com/containercraft/konductor-go/plugins/auth"
+    kcorelog "github.com/containercraft/sparta-libs/log"
+//  kpullsecret "github.com/containercraft/konductor-go/plugins/pullsecret"
 //  "github.com/containercraft/konductor-go/plugins/err"
 )
 

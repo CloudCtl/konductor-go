@@ -91,7 +91,7 @@ func CoreParse() {
 }
 
 type Configuration struct {
-	Auth      AuthConfiguration `mapstructure:"provider-auth"`
+	Auth      AuthConfiguration `mapstructure:"provider-pullsecret"`
 	Cloud     CloudConfiguration
 	Redsord   RedSordConfiguration
 	Subnets   SubnetsConfiguration
