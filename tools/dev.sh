@@ -10,5 +10,5 @@ sudo /usr/bin/podman run \
 }
 run_dev
 
-mkdir -p /root/deploy/ansible/deploy 
-cp -f site.yml /root/deploy/ansible/deploy/ 
+mkdir -p /root/platform/iac/openshift
+cp -f site.yml /root/platform/iac/openshift/ 

@@ -7,5 +7,5 @@
 
 #./build.sh
 
-mkdir -p /root/deploy/ansible/deploy
-cp -f ./site.yml /root/deploy/ansible/deploy/site.yml 2>/dev/null
+mkdir -p /root/platform/iac/openshift
+cp -f ./site.yml /root/platform/iac/openshift/site.yml 2>/dev/null
