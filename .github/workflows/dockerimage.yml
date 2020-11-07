@@ -21,25 +21,13 @@ jobs:
       run: |
         export githash="$(git log -1 --pretty=%h)"
         echo "::set-env name=githash::$githash"
-    - name: Login DockerHub
+    - name: Docker.io + Quay.io Login
       run: |
-        echo "${{ secrets.DOCKERHUB_PASSWD }}" | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin quay.io 
-    - name: Login Quay.io 
-      run: |
+        echo "${{ secrets.DOCKERHUB_PASSWD }}" | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin quay.io; \
         echo "${{ secrets.DOCKERHUB_PASSWD }}" | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin docker.io 
-    - name: Write gitconfig
-      run: |
-        cat <<EOF > gitconfig
-        [user]
-                name = ${{ secrets.ROBOT_USER }}
-                email = ${{ secrets.ROBOT_USER }}@braincraft.io
-        [url "https://${{ secrets.ROBOT_USER }}:${{ secrets.ROBOT_TOKEN }}@github.com"]
-                insteadOf = https://github.com
-        EOF
     - name: Build Entrypoint
       run: |
         docker run --rm \
-            --volume $(pwd)/gitconfig:/root/.gitconfig:z \
             --volume $(pwd):/root/dev:z \
             --volume $(pwd)/bin:/tmp/bin:z \
             --entrypoint /root/dev/build.sh \
@@ -48,7 +36,7 @@ jobs:
       run: |
         docker build . \
             --force-rm \
-            --file ./container/Dockerfile \
+            --file ./Dockerfile \
             --tag quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go \
             --tag docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go \
             --tag quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest \
