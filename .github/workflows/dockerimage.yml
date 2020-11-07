@@ -1,11 +1,11 @@
-name: Builder & konductor Image Pipeline
+name: EntrypointBuilder
 on:
   push:
     branches: 
-      - master
+      - main
   pull_request:
     branches: 
-      - master
+      - main
   schedule:
     - cron: '0 12 * * *'
 jobs:
