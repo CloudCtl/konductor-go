@@ -1,55 +1,74 @@
-name: EntrypointBuilder
+name: konductor-go
 on:
+  schedule:
+    - cron: '0 12 * * *'
   push:
+    paths-ignore:
+    - 'docs/**'
+    - '**.md'
     branches: 
       - main
   pull_request:
+    paths-ignore:
+    - 'docs/**'
+    - '**.md'
     branches: 
       - main
-  schedule:
-    - cron: '0 12 * * *'
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
-    - name: Variable | Export Build Date
+
+    - name: Login Docker.io
+      uses: docker/login-action@v1
+      with:
+        logout: true
+        registry: docker.io
+        username: ${{ secrets.ROBOT_USER_DOCKERHUB }}
+        password: ${{ secrets.ROBOT_TOKEN_DOCKERHUB }}
+
+    - name: Login Quay.io
+      uses: docker/login-action@v1
+      with:
+        logout: true
+        registry: quay.io
+        username: ${{ secrets.ROBOT_USER_QUAY }}
+        password: ${{ secrets.ROBOT_TOKEN_QUAY }}
+
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Git Checkout
+      uses: actions/checkout@v2
+
+    - name: Rake Variables
       run: |
-        export varrundate="$(date +%y%m%d%I%M%S)"
-        echo "::set-env name=varrundate::$varrundate"
-    - name: Variable | Git Commit Hash
-      run: |
-        export githash="$(git log -1 --pretty=%h)"
-        echo "::set-env name=githash::$githash"
-    - name: Docker.io + Quay.io Login
-      run: |
-        echo "${{ secrets.DOCKERHUB_PASSWD }}" | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin quay.io; \
-        echo "${{ secrets.DOCKERHUB_PASSWD }}" | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin docker.io 
-    - name: Build Entrypoint
+        set -x ; \
+        echo "varrundate=$(date +%y%m%d%I%M%S)" >> ${GITHUB_ENV};\
+        echo;  
+
+    - name: Build Binary
       run: |
         docker run --rm \
             --volume $(pwd):/root/dev:z \
             --volume $(pwd)/bin:/tmp/bin:z \
             --entrypoint /root/dev/build.sh \
-          docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/golang
-    - name: Stash Entrypoint into cradle | konductor-go
-      run: |
-        docker build . \
-            --force-rm \
-            --file ./Dockerfile \
-            --tag quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go \
-            --tag docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go \
-            --tag quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest \
-            --tag docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest \
-            --tag quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest-${{ env.varrundate }}-${{ env.githash }} \
-            --tag docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest-${{ env.varrundate }}-${{ env.githash }}
-    - name: Image Push | konductor-go | quay.io
-      run: |
-        docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go;                                 \
-        docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest;                                 \
-        docker push quay.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest-${{ env.varrundate }}-${{ env.githash }};
-    - name: Image Push | konductor-go | docker.io
-      run: |
-        docker push docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go;                                 \
-        docker push docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest;                                 \
-        docker push docker.io/${{ secrets.DOCKERHUB_ORGANIZATION }}/konductor-go:latest-${{ env.varrundate }}-${{ env.githash }};
+          docker.io/${{ secrets.GIT_PROJECT }}/golang
+
+    - name: Build Cradle
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: Dockerfile
+        platforms: linux/amd64
+        push: true
+        tags: |
+          quay.io/${{ secrets.GIT_PROJECT }}/${{ github.workflow }}
+          quay.io/${{ secrets.GIT_PROJECT }}/${{ github.workflow }}:latest
+          quay.io/${{ secrets.GIT_PROJECT }}/${{ github.workflow }}:main-${{ env.varrundate }}-${{ github.sha }}
+          docker.io/${{ secrets.GIT_PROJECT }}/${{ github.workflow }}
+          docker.io/${{ secrets.GIT_PROJECT }}/${{ github.workflow }}:latest
+          docker.io/${{ secrets.GIT_PROJECT }}/${{ github.workflow }}:main-${{ env.varrundate }}-${{ github.sha }}
+        build-args: |
+          varRunDate=${{ env.varrundate }}

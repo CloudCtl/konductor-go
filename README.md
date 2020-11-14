@@ -1,3 +1,4 @@
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/cloudctl/konductor-go/konductor-go/main?style=plastic)
 # Konductor container entrypoint binary
 
 ```
